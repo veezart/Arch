@@ -7,10 +7,11 @@ Usefull links:
     [www.archlinux.org](https://www.archlinux.org)
 
     Download link:
-    [https://www.archlinux.org/download/](https://www.archlinux.org/download/)
+    
+   [https://www.archlinux.org/download/](https://www.archlinux.org/download/)
 
     Instalation guide:
-    [https://wiki.archlinux.org/index.php/Installation_guide](https://wiki.archlinux.org/index.php/Installation_guide)
+   [https://wiki.archlinux.org/index.php/Installation_guide](https://wiki.archlinux.org/index.php/Installation_guide)
 
 Checksums:
 
@@ -21,9 +22,9 @@ Checksums:
 Create bootable USB flash drive:
     
     Use app Rufus:
-    [https://rufus.ie/](https://rufus.ie/)
+   [https://rufus.ie/](https://rufus.ie/)
 
-START CORE INSTALATION
+# START CORE INSTALATION
 
 Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps. [https://github.com/MatMoul/archfi](https://github.com/MatMoul/archfi)                        
                                                                            
@@ -32,8 +33,6 @@ Instead You can use archfi script instead but remember to completete instalation
         # sh archfi                        
                                                                           
                                                                                   
-
-
 
 Set the keyboard layout:
 ------------------------    
@@ -151,7 +150,7 @@ Host
         ::1           localhost 
         127.0.1.1     nazwahosta.localdomain   nazwahosta
 
-network
+Network
 -------
     # systemctl enable NetworkManager
 
@@ -164,25 +163,26 @@ Root password
 
 
 Boot loader
------------                                                                    
-    
+-----------
+ 
     # bootctl --path=/boot install
     # cd /boot/loader
     # vim loader.conf
-                                                                                   
+
 	    default arch
 	    timeout 5
-                                                                                   
+
     # cd entries
     # vim arch.conf
-                                                                                   
+
 	    title Arch Linux
 	    linux /vimlinuz-linux 
-	    initrd /initramfs-linux.img     
-	    initrd /intel-ucode.img      
-	    options root=PARTUUID=... rw        
+	    initrd /initramfs-linux.img 
+	    initrd /intel-ucode.img 
+	    options root=PARTUUID=... rw  
     
-    :r! blkid (in vim to select v-start, y-copy, d-cut, P,p-paste  for PARTUUID)                                                           
+    :r! blkid (in vim to select v-start, y-copy, d-cut, P,p-paste for PARTUUID)
+
 
 Reboot
 ------
@@ -215,7 +215,7 @@ Personal account
 Login new user
 --------------
 
-FINNISH CORE INSTALATION
+# FINNISH CORE INSTALATION
 
 
 Instalation display server drivers and manager         
