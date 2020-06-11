@@ -66,18 +66,22 @@ Partition the disks:
             # mkswap /dev/sdxy 
             # swapon /dev/sdxy 
         boot (efi):
-            # mkfs.vfat /dev/sdxy (fat32 for systemd boot manager)
+            # mkfs.fat -F32 /dev/sdxy (fat32 for systemd boot manager)
 
         Linux partitions
             # mkfs.ext4 /dev/sdxy (or .btrfs)
 
 Mount partitions:
 -----------------
-    # mkdir /mnt/boot (or efi)
+    
+    # mount /dev/sdxy /mnt (root)
+    
+    # mkdir -p /mnt/boot (or efi)
+    # mount /dev/sdxy (efi partition)  /mnt/boot (or efi)
+
     # mkdir /mnt/home 
     
-    # mount /dev/sdxy (efi partition)  /mnt/boot (or efi)
-    # mount /dev/sdxy /mnt (root) 
+     
     # mount /dev/sdxy /mnt/home
 
 Instalation:
@@ -167,7 +171,23 @@ Root password
 Boot loader
 -----------
  
-    # bootctl --path=/boot install
+    # bootctl --path=/boot$esp install
+    # tree /boot
+
+    /boot
+├── EFI
+│   ├── Boot
+│   │   └── BOOTX64.EFI
+│   └── systemd
+│       └── systemd-bootx64.efi
+├── initramfs-linux-fallback.img
+├── initramfs-linux.img
+├── loader
+│   ├── entries
+│   │   └── arch.conf
+│   └── loader.conf
+└── vmlinuz-linux
+
     # cd /boot/loader
     # vim loader.conf
 
@@ -216,9 +236,29 @@ Personal account
 
 Login new user
 --------------
+    ***
+
+Enable periodic TRIM for SSD
+----------------------------
+
+    Check status:
+    
+    $ systemctl status fstrim.service
+
+    Enable:
+
+    $ sudo systemctl enable fstrim.timer
+
+    Verify:
+
+    $ sudo systemctl list-timers --all
+
+    Disable:
+
+    $ sudo systemctl disable fstrim.timer
 
 
-# II Instalation display server drivers and manager         
+# II Instalation display server manager and drivers          
                                                               
 Display server
 --------------
