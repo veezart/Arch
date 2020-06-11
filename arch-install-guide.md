@@ -26,7 +26,7 @@ Create bootable USB flash drive:
 Use app Rufus:
 [https://rufus.ie/](https://rufus.ie/)
 
-# Core installation
+# I Core installation
 
 Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps. [https://github.com/MatMoul/archfi](https://github.com/MatMoul/archfi)                        
                                                                            
@@ -218,7 +218,7 @@ Login new user
 --------------
 
 
-# Instalation display server drivers and manager         
+# II Instalation display server drivers and manager         
                                                               
 Display server
 --------------
