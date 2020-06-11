@@ -175,18 +175,18 @@ Boot loader
     # tree /boot
 
     /boot
-├── EFI
-│   ├── Boot
-│   │   └── BOOTX64.EFI
-│   └── systemd
-│       └── systemd-bootx64.efi
-├── initramfs-linux-fallback.img
-├── initramfs-linux.img
-├── loader
-│   ├── entries
-│   │   └── arch.conf
-│   └── loader.conf
-└── vmlinuz-linux
+#├── EFI
+#│   ├── Boot
+#│   │   └── BOOTX64.EFI
+#│   └── systemd
+#│       └── systemd-bootx64.efi
+#├── initramfs-linux-fallback.img
+#├── initramfs-linux.img
+#├── loader
+#│   ├── entries
+#|   │   └── arch.conf
+#│   └── loader.conf
+#└── vmlinuz-linux
 
     # cd /boot/loader
     # vim loader.conf
