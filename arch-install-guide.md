@@ -176,27 +176,16 @@ Boot loader
 
     /boot
 ├── 
-
 │   ├── Boot
-
 │   │   └── BOOTX64.EFI
-
 │   └── systemd
-
 │       └── systemd-bootx64.efi
-
 ├── initramfs-linux-fallback.img
-
 ├── initramfs-linux.
-
 ├── 
-
 │   ├── entries
-
 |   │   └── arch.conf
-
 │   └── loader.conf
-
 └── vmlinuz-linux
 
     # cd /boot/loader
