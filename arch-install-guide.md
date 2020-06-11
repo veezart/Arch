@@ -173,20 +173,22 @@ Boot loader
  
     # bootctl --path=/boot$esp install
     # tree /boot
-
-    /boot
-├── 
+    
+``` bash
+/boot
+├── EFI
 │   ├── Boot
 │   │   └── BOOTX64.EFI
 │   └── systemd
 │       └── systemd-bootx64.efi
 ├── initramfs-linux-fallback.img
-├── initramfs-linux.
-├── 
+├── initramfs-linux.img
+├── loader
 │   ├── entries
-|   │   └── arch.conf
+│   │   └── arch.conf
 │   └── loader.conf
 └── vmlinuz-linux
+```
 
     # cd /boot/loader
     # vim loader.conf
