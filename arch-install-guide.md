@@ -2,27 +2,29 @@ Arch Linux Install Guide
 ------------------------
 
 Usefull links:
+--------------
 
-    Official site:
-    [www.archlinux.org](https://www.archlinux.org)
+Official site:
+[www.archlinux.org](https://www.archlinux.org)
 
-    Download link:
-    
-   [https://www.archlinux.org/download/](https://www.archlinux.org/download/)
+Download link:
+[https://www.archlinux.org/download/](https://www.archlinux.org/download/)
 
-    Instalation guide:
-   [https://wiki.archlinux.org/index.php/Installation_guide](https://wiki.archlinux.org/index.php/Installation_guide)
+Instalation guide:
+[https://wiki.archlinux.org/index.php/Installation_guide](https://wiki.archlinux.org/index.php/Installation_guide)
 
 Checksums:
 
     Checksums check with PowerShell:
+    
     (Get-FileHash path/to/file.iso -Algorithm SHA1).Hash.ToUpper() -eq "SHA1 checksum".ToUpper()
     (Get-FileHash path/to/file.iso -Algorithm MD5).Hash.ToUpper() -eq "MD5 checksum".ToUpper()
 
 Create bootable USB flash drive:
+--------------------------------
     
-    Use app Rufus:
-   [https://rufus.ie/](https://rufus.ie/)
+Use app Rufus:
+[https://rufus.ie/](https://rufus.ie/)
 
 # START CORE INSTALATION
 
