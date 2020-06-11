@@ -4,13 +4,13 @@ Arch Linux Install Guide
 Usefull links:
 
     Official site:
-    https://www.archlinux.org
+    (https://www.archlinux.org)
 
     Download link:
-    https://www.archlinux.org/download/
+    (https://www.archlinux.org/download/)
 
     Instalation guide:
-    https://wiki.archlinux.org/index.php/Installation_guide
+    (https://wiki.archlinux.org/index.php/Installation_guide)
 
 Checksums:
 
@@ -21,25 +21,18 @@ Checksums:
 Create bootable USB flash drive:
     
     Use app Rufus:
-    https://rufus.ie/
+    (https://rufus.ie/)
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ START CORE INSTALATION ///////////////////////
+START CORE INSTALATION
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@                                                                           @         
-@   Instead You can use archfi script instead but remember to completete    @
-@   instalation and configuration like is in the next steps.                @
-@                                                                           @
-@                  https://github.com/MatMoul/archfi                        @
-@                                                                           @
-@                       wget archfi.sf.net/archfi                           @
-@                                    or                                     @
-@                       wget matmoul.github.io/archfi                       @
-@                                                                           @
-@                         # sh archfi    and fallow                         @
-@                                                                           @
-@                                                                           @         
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps. (https://github.com/MatMoul/archfi)                        
+                                                                           
+        wget archfi.sf.net/archfi or wget matmoul.github.io/archfi                       
+                                                                           
+        # sh archfi                        
+                                                                          
+                                                                                  
+
 
 
 Set the keyboard layout:
@@ -109,13 +102,14 @@ Chroot
 
         # arch-chroot /
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@                                                                                   @
-@       If used archfi install:                                           	    @
-@                                                                                   @
-@       # pacman -S linux-firmware base-devel linux-headers networkmanager vim      @
-@                                                                                   @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+                                                                                   
+If used archfi install:
+-----------------------                                           	    
+                                                                                  
+        # pacman -S linux-firmware base-devel linux-headers networkmanager vim      
+                                                                        
+
 
        
 Intel-ucode
@@ -167,29 +161,26 @@ Root password
     Set the root password:
 
         # passwd
-=====================================================================================
-;                                                                                   ;
-;    Boot loader                                                                    ;
-;    -----------                                                                    ;
-;        # bootctl --path=/boot install                                             ;
-;        # cd /boot/loader                                                          ;
-;        # vim loader.conf                                                          ;
-;                                                                                   ;
-;	        default arch                                                        ;
-;	        timeout 5                                                           ;
-;                                                                                   ;
-;        # cd entries                                                               ;
-;        # vim arch.conf                                                            ;   
-;                                                                                   ;
-;	        title Arch Linux                                                    ;
-;	        linux /vimlinuz-linux                                               ;
-;	        initrd /initramfs-linux.img                                         ;
-;	        initrd /intel-ucode.img                                             ;
-;	        options root=PARTUUID=... rw                                        ;
-;                                                                                   ;
-;    :r! blkid (in vim to select v-start, y-copy, d-cut, P,p-paste  for PARTUUID)   ;
-;                                                                                   ;
-=====================================================================================
+
+
+Boot loader                                                                   -----------                                                                    
+        # bootctl --path=/boot install                                             
+        # cd /boot/loader                                                          
+        # vim loader.conf                                                          
+                                                                                   
+	        default arch                                                        
+	        timeout 5                                                           
+                                                                                   
+        # cd entries                                                               
+        # vim arch.conf                                                               
+                                                                                   
+	        title Arch Linux                                                    
+	        linux /vimlinuz-linux                                               
+	        initrd /initramfs-linux.img                                         
+	        initrd /intel-ucode.img                                             
+	        options root=PARTUUID=... rw                                        
+    
+    :r! blkid (in vim to select v-start, y-copy, d-cut, P,p-paste  for PARTUUID)                                                           
 
 Reboot
 ------
@@ -222,14 +213,11 @@ Personal account
 Login new user
 --------------
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\ FINNISH CORE INSTALATION ///////////////////////////
+FINNISH CORE INSTALATION
 
-****************************************************************
-*                                                              *
-*       Instalation display server drivers and manager         *
-*                                                              *
-****************************************************************
 
+Instalation display server drivers and manager         
+                                                              
 Display server
 --------------
     $ sudo pacman -S xorg xorg-xinit xterm 
@@ -252,18 +240,16 @@ Display manager
     $ sudo systemctl enable lightdm.service
 
 
-****************************************************************
-*                                                              *
-*               Instalation windows manager                    *
-*                                                              *
-****************************************************************
 
->>>>-------->      i3     <--------<<<<
+Instalation windows manager                    
+---------------------------                                                              
 
-$ sudo pacman -S i3 
-$ sudo pacman -S rofi
-$ sudo pacman -S picom 
-$ sudo pacman -S polkit 
-$ sudo pacman -S lxappearance
-$ sudo pacman -S flameshot
-$ sudo pacman -S ttf-roboto
+i3
+
+    $ sudo pacman -S i3 
+    $ sudo pacman -S rofi
+    $ sudo pacman -S picom 
+    $ sudo pacman -S polkit 
+    $ sudo pacman -S lxappearance
+    $ sudo pacman -S flameshot
+    $ sudo pacman -S ttf-roboto
