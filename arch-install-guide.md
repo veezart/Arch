@@ -163,22 +163,24 @@ Root password
         # passwd
 
 
-Boot loader                                                                   -----------                                                                    
-        # bootctl --path=/boot install                                             
-        # cd /boot/loader                                                          
-        # vim loader.conf                                                          
+Boot loader
+-----------                                                                    
+    
+    # bootctl --path=/boot install
+    # cd /boot/loader
+    # vim loader.conf
                                                                                    
-	        default arch                                                        
-	        timeout 5                                                           
+	    default arch
+	    timeout 5
                                                                                    
-        # cd entries                                                               
-        # vim arch.conf                                                               
+    # cd entries
+    # vim arch.conf
                                                                                    
-	        title Arch Linux                                                    
-	        linux /vimlinuz-linux                                               
-	        initrd /initramfs-linux.img                                         
-	        initrd /intel-ucode.img                                             
-	        options root=PARTUUID=... rw                                        
+	    title Arch Linux
+	    linux /vimlinuz-linux 
+	    initrd /initramfs-linux.img     
+	    initrd /intel-ucode.img      
+	    options root=PARTUUID=... rw        
     
     :r! blkid (in vim to select v-start, y-copy, d-cut, P,p-paste  for PARTUUID)                                                           
 
