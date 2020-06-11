@@ -4,13 +4,13 @@ Arch Linux Install Guide
 Usefull links:
 
     Official site:
-    (https://www.archlinux.org)
+    [www.archlinux.org](https://www.archlinux.org)
 
     Download link:
-    (https://www.archlinux.org/download/)
+    [https://www.archlinux.org/download/](https://www.archlinux.org/download/)
 
     Instalation guide:
-    (https://wiki.archlinux.org/index.php/Installation_guide)
+    [https://wiki.archlinux.org/index.php/Installation_guide](https://wiki.archlinux.org/index.php/Installation_guide)
 
 Checksums:
 
@@ -21,11 +21,11 @@ Checksums:
 Create bootable USB flash drive:
     
     Use app Rufus:
-    (https://rufus.ie/)
+    [https://rufus.ie/](https://rufus.ie/)
 
 START CORE INSTALATION
 
-Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps. (https://github.com/MatMoul/archfi)                        
+Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps. [https://github.com/MatMoul/archfi](https://github.com/MatMoul/archfi)                        
                                                                            
         wget archfi.sf.net/archfi or wget matmoul.github.io/archfi                       
                                                                            
