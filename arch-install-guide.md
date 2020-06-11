@@ -173,7 +173,7 @@ Boot loader
  
     # bootctl --path=/boot$esp install
     # tree /boot
-    
+
 ``` bash
 /boot
 ├── EFI
@@ -190,22 +190,32 @@ Boot loader
 └── vmlinuz-linux
 ```
 
-    # cd /boot/loader
-    # vim loader.conf
+    # vim /boot/loader/loader.conf
 
 	    default arch
 	    timeout 5
+        editor 0
 
-    # cd entries
-    # vim arch.conf
+    # vim /boot/loader/entries/arch.conf
 
-	    title Arch Linux
-	    linux /vimlinuz-linux 
-	    initrd /initramfs-linux.img 
-	    initrd /intel-ucode.img 
-	    options root=PARTUUID=... rw  
+	    title   Arch Linux
+	    linux   /vimlinuz-linux
+        initrd  /intel-ucode.img  
+	    initrd  /initramfs-linux.img
+	    options root=PARTUUID=66e3f67d-f59a-4086-acdd-a6e248a3ee80 rw 
+
+            (or options root=/dev/nvme0n1p3 rw intel_iommu=on)
+
+    To find PARTUUID in Vim: 
+
+        :r! blkid -s PARTUUID -o value /dev/sdxy (Arch root partition)
+
+            to select press v-start, y-copy, d-cut, P,p-paste
+
+    # bootctl status
+    # bootctl list
+    # bootctl --path=/boot update
     
-    :r! blkid (in vim to select v-start, y-copy, d-cut, P,p-paste for PARTUUID)
 
 
 Reboot
