@@ -16,7 +16,7 @@ Instalation guide:
 Checksums:
 
     Checksums check with PowerShell:
-    
+
     (Get-FileHash path/to/file.iso -Algorithm SHA1).Hash.ToUpper() -eq "SHA1 checksum".ToUpper()
     (Get-FileHash path/to/file.iso -Algorithm MD5).Hash.ToUpper() -eq "MD5 checksum".ToUpper()
 
@@ -220,7 +220,7 @@ Login new user
 # FINNISH CORE INSTALATION
 
 
-Instalation display server drivers and manager         
+## Instalation display server drivers and manager         
                                                               
 Display server
 --------------
