@@ -267,6 +267,3 @@ $ sudo pacman -S polkit
 $ sudo pacman -S lxappearance
 $ sudo pacman -S flameshot
 $ sudo pacman -S ttf-roboto
-$ sudo pacman -S
-$ sudo pacman -S
-$ sudo pacman -S
