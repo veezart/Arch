@@ -1,14 +1,12 @@
 #! /bin/bash  
-# Setup HUION H610 PRO V2, after bridged to wacom driver with Digimend Kernel module.  
-# License: CC-0/Public-Domain license  
-# author: deevad  
+# Setup HUION H610 PRO V2, after bridged to wacom driver with Digimend Kernel module.
 
 
 # $ xsetwacom list
 # Tablet definition  
-tabletstylus="TABLET Pen Tablet Pen stylus"  
-tabletpad="TABLET Pen Tablet Pad pad"  
-# xsetwacom list modifiers  "HUION Huion Tablet Pad pad"
+tabletstylus="HUION Huion Tablet Pen stylus"  
+tabletpad="HUION Huion Tablet Pad pad"  
+
  
 # Mapping
 # $ xrandr
@@ -21,10 +19,7 @@ tabletpad="TABLET Pen Tablet Pad pad"
 # screenX=1920  
 # screenY=1080  
 # map to good screen (dual nvidia)  
-xsetwacom set "$tabletstylus" MapToOutput "HEAD-0"  
-# setup ratio :  
-# newtabletY=$(( $screenY * $tabletX / $screenX ))  
-#xsetwacom --set "$tabletstylus" Area 0 0 "$tabletX" "$newtabletY"  
+xsetwacom set "$tabletstylus" MapToOutput "HDMI-0"
 
 
 # Buttons 
@@ -48,6 +43,7 @@ xsetwacom set "$tabletstylus" MapToOutput "HEAD-0"
 #   | 12 |
 #   ------   
 
+# xsetwacom list modifiers  "HUION Huion Tablet Pad pad"
 xsetwacom --set "$tabletpad" Button 1 key Ctrl Alt Z  # undo 
 xsetwacom --set "$tabletpad" Button 2 key e           # erase  
 xsetwacom --set "$tabletpad" Button 3 key b           # brush
@@ -55,19 +51,11 @@ xsetwacom --set "$tabletpad" Button 8 key Ctrl =      # zoom in
 xsetwacom --set "$tabletpad" Button 9 key Ctrl -      # zoom out 
 xsetwacom --set "$tabletpad" Button 10 key ]          # increase size brush 
 xsetwacom --set "$tabletpad" Button 11 key [          # decrease size brush
-xsetwacom --set "$tabletpad" Button 12 key space      # grab  
+xsetwacom --set "$tabletpad" Button 12 key space      # grab
 
+# xsetwacom --set "$tabletstylus" Button 2 key empty      # empty
+# xsetwacom --set "$tabletstylus" Button 3 key empty      # empty
 
-# Xinput option  
-# =============  
-# for the list:  
-# xinput list  
-
-# xinput list-props 'TABLET Pen Tablet Mouse'  
-# xinput set-prop 'TABLET Pen Tablet Mouse' "Evdev Middle Button Emulation" 0  
-# alternate way to map to a single screen  
-# execute "xrander" in a terminal to get the screen name ( DVI-D-0 in this example )  
-# xinput set-prop 'TABLET Pen Tablet Pen stylus' DVI-D-0
 
     
         
