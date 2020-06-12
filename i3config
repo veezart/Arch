@@ -1,0 +1,15 @@
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Volume icon tray
+exec --no-startup-id volumeico
+
+# Wallpaper
+exec_always feh --bg-scale /path/to/image
+
+# Assign application to workspace. Class can find by enter xprop in terminal and pick application window.
+assign [class="window_class"] $ws1

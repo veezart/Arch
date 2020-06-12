@@ -300,13 +300,75 @@ Instalation windows manager
 
 i3
 
-    $ sudo pacman -S i3 
+    $ sudo pacman -S i3-gaps 
     $ sudo pacman -S rofi
     $ sudo pacman -S picom 
     $ sudo pacman -S polkit 
     $ sudo pacman -S lxappearance
     $ sudo pacman -S flameshot
     $ sudo pacman -S ttf-roboto
+
+i3 config file ~/i3/config
+
+    # Media player controls
+    bindsym XF86AudioPlay exec playerctl play
+    bindsym XF86AudioPause exec playerctl pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+
+    # Volume icon tray
+    exec --no-startup-id volumeico
+
+    # Wallpaper
+    exec_always feh --bg-scale /path/to/image
+
+    # Assign application to workspace. Class can find by enter xprop in terminal and pick application windowSS.
+    assign [class="window_class"] $ws1
+
+    
+    Fonts:
+
+    $ fc-list : family style
+        ~/i3/config
+
+    use lxappearance 
+        
+        ~/.gtkrc-2.0
+        ~/.config/gtk-3.0
+
+    Font Awesome:
+   [https://github.com/FortAwesome/Font-Awesome/releases]
+   [https://fontawesome.com/cheatsheet?from=io]
+   
+   unzip Font-Awesome-X.X.X.zip  
+   mkdit ~/.fonts
+   mv fontawesome-webfont.ttf ~/.fonts
+
+    Colors:
+    set $bg-color 	         #2f343f
+    set $inactive-bg-color   #2f343f
+    set $text-color          #f3f4f5
+    set $inactive-text-color #676E7D
+    set $urgent-bg-color     #E53935
+
+    # window colors
+    #                       border              background         text                 indicator
+    client.focused          $bg-color           $bg-color          $text-color          #00ff00
+    client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+    client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+    client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+    # bar
+    bar {
+  	status_command i3blocks -c /home/booker/.i3/i3blocks.conf
+	colors {
+		    background $bg-color
+	    	separator #757575
+		    #                  border             background         text
+		    focused_workspace  $bg-color          $bg-color          $text-color
+		    $inactive-bg-color $inactive-bg-color $inactive-text-color
+		    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	        }
 
 Huion tablet driver
 -------------------
@@ -331,6 +393,7 @@ Huion tablet driver
             "<VID>:<PID>" is it ID "256c:006d"
 
     $ xsetwacom list
+
         HUION Huion Tablet Pad pad                   id: 9   type: PAD
         HUION Huion Tablet Pen stylus                id: 10  type: STYLUS
 
