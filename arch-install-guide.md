@@ -338,21 +338,21 @@ Huion tablet driver
 
         $ xsetwacom set "HUION Huion Tablet Pad pad" button 9 key Ctrl Z
         
-        buttons key are numbered from top 1, 2, 3, 8, 9, 10 and on
+             key are numbered from top 1, 2, 3, 8, 9, 10 and on
 
         $ xsetwacom set "HUION Huion Tablet Pen stylus" button 2 key Ctrl Z
 
-        buttons pen key are numbered 1 (tip), 2, 3
+            buttons pen key are numbered 1 (tip), 2, 3
 
         Reset buytton:
 
-        xsetwacom set 'HUION Huion Tablet Pen stylus' Button 1 "button +1"
+            $ xsetwacom set 'HUION Huion Tablet Pen stylus' Button 1 "button +1"
 
     You can restrict the tablet input to that display like this:
 
         $ xrandr
         
-        HDMI-3 connected 1440x900+0+0 (normal left inverted right x axis y axis) 408mm x 255mm    
+            HDMI-3 connected 1440x900+0+0 (normal left inverted right x axis y axis) 408mm x 255mm    
             
         $ xsetwacom set "HUION Huion Tablet Pen stylus" MapToOutput HDMI-0
         or

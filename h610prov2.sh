@@ -24,7 +24,6 @@ xsetwacom set "$tabletstylus" MapToOutput "HDMI-0"
 
 # Buttons 
 
-# 
 #   ------
 #   |  1 |
 #   |----|
