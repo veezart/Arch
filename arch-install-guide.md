@@ -1,5 +1,5 @@
-Arch Linux Install Guide
-------------------------
+Arch Linux Installation Guide
+-----------------------------
 
 Usefull links:
 --------------
@@ -307,3 +307,57 @@ i3
     $ sudo pacman -S lxappearance
     $ sudo pacman -S flameshot
     $ sudo pacman -S ttf-roboto
+
+Huion tablet driver
+-------------------
+
+    $ sudo pacman -S usbutils
+
+    $ lsusb
+
+    $ vim /etc/X11/xorg.conf.d/50-tablet.conf 
+
+        Section "InputClass"
+            Identifier "Tablet"
+            Driver "wacom"
+            MatchDevicePath "/dev/input/event*"
+            MatchUSBID "<VID>:<PID>"
+        EndSection
+
+        :r! lsusb
+
+            Bus 001 Device 003: ID 1234:abcd
+
+            "<VID>:<PID>" is it ID "1234:abcd"
+
+    $ xsetwacom list
+        HID 256c:006e Pad pad                   id: 9   type: PAD
+        HID 256c:006e Pen stylus                id: 10  type: STYLUS
+
+    You can assign key combination to the buttons:
+
+        $ xsetwacom set "HID 256c:006e Pad pad" button 9 key Ctrl Z
+        
+        buttons key are numbered from top 1, 2, 3, 8, 9, 10 and on
+
+        $ xsetwacom set "HID 256c:006e Pen stylus" button 2 key Ctrl Z
+
+        buttons pen key are numbered 1 (tip), 2, 3
+
+        Reset buytton:
+
+        xsetwacom set 'HID 256c:006e Pen stylus' Button 1 "button +1"
+
+    You can restrict the tablet input to that display like this:
+
+        $ xrandr
+        
+        HDMI-3 connected 1440x900+0+0 (normal left inverted right x axis y axis) 408mm x 255mm    
+            
+        $ xsetwacom set "HID 256c:006e Pen stylus" MapToOutput HDMI-3
+        or
+        $ xinput set-prop "HID 256c:006e Pen stylus" HDMI-3
+
+
+
+
