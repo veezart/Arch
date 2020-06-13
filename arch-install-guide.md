@@ -265,21 +265,21 @@ Login new user
 Enable periodic TRIM for SSD
 ----------------------------
 
-    Check status:
+    **Check status:**
     
-    $ systemctl status fstrim.service
-
+    > $ systemctl status fstrim.service
+    
     Enable:
-
-    $ sudo systemctl enable fstrim.timer
-
+    
+    > $ sudo systemctl enable fstrim.timer
+    
     Verify:
 
-    $ sudo systemctl list-timers --all
+    > $ sudo systemctl list-timers --all
 
     Disable:
 
-    $ sudo systemctl disable fstrim.timer
+    > $ sudo systemctl disable fstrim.timer
 
 
 # II Instalation display server manager and drivers          
@@ -349,8 +349,9 @@ i3 config file ~/i3/config
         ~/.config/gtk-3.0
 
     Font Awesome:
-   [https://github.com/FortAwesome/Font-Awesome/releases]
-   [https://fontawesome.com/cheatsheet?from=io]
+
+    [https://github.com/FortAwesome/Font-Awesome/releases](https://github.com/FortAwesome/Font-Awesome/releases)
+    [https://fontawesome.com/cheatsheet?from=io](https://fontawesome.com/cheatsheet?from=io)
    
    unzip Font-Awesome-X.X.X.zip  
    mkdit ~/.fonts
