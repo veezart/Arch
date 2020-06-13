@@ -1,7 +1,7 @@
 # Arch Linux Installation Guide
 -----------------------------
 
-Usefull links:
+### Usefull links:
 --------------
 
 Official site:
@@ -13,7 +13,7 @@ Download link:
 Instalation guide:
 >https://wiki.archlinux.org/index.php/Installation_guide
 
-Checksums:
+#### Checksums:
 
 Checksums check with PowerShell:
 
@@ -21,70 +21,61 @@ Checksums check with PowerShell:
 
 ```(Get-FileHash path/to/file.iso -Algorithm MD5).Hash.ToUpper() -eq "MD5 checksum".ToUpper()```
 
-Create bootable USB flash drive:
+### Create bootable USB flash drive:
 --------------------------------
     
 Use app Rufus:
 > https://rufus.ie/
 
-$ I Core installation
+## I Core installation
 
 Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps. [https://github.com/MatMoul/archfi](https://github.com/MatMoul/archfi)                        
                                                                            
-wget archfi.sf.net/archfi or wget matmoul.github.io/archfi                       
+> wget archfi.sf.net/archfi or wget matmoul.github.io/archfi                       
 
->$sh archfi                        
-                                                                          
-                                                                                  
-
-Set the keyboard layout:
+```$sh archfi```                        
+                                                                             
+## Set the keyboard layout:
 ------------------------    
-<<<<<<< HEAD
->$loadkeys pl
+```$loadkeys pl```
 
-Verify the boot mode:
+## Verify the boot mode:
 ---------------------
->$ ls /sys/firmware/efi/efivars
-=======
-># loadkeys pl
+```$ ls /sys/firmware/efi/efivars```
 
-Verify the boot mode:
----------------------
-># ls /sys/firmware/efi/efivars
->>>>>>> f5a0af439f2e911eb0ec7c45d24656e96bf7957e
-
-Connect to the internet:
+## Connect to the internet:
 ------------------------
-    $ ip link
-    $ ping archlinux.org
-
-Partition the disks:
+```
+$ ip link
+$ ping archlinux.org
+```
+## Partition the disks:
 --------------------
-    To identify these devices, use lsblk or fdisk
+To identify these devices, use lsblk or fdisk
+```
+$ fdisk -l
+$ lsblk
+```
+Make partitions (efi 260 - 512MB)
 
-        $ fdisk -
-        $ lsblk
-
-    Make partitions (efi 260 - 512MB)
-
-        $ cfdisk /dev/sdx  (x=a,b,c…)
-            /boot
-            /
-            /swap
-            /home
-            /var    (8-12G)
+```$ cfdisk /dev/sdx  (x=a,b,c…)```
+>/boot
+>/
+>/swap
+>/home
+>/var    (8-12G)
     
-    Format partitions
+### Format partitions
  
-        boot (efi):
-            $ mkfs.fat -F32 /dev/sdxy (fat32 for systemd boot manager)
-        swap: 
-            $ mkswap /dev/sdxy 
-            $ swapon /dev/sdxy
-        Linux partitions:
-            $ mkfs.ext4 /dev/sdxy 
-            $ mkfs.btrfs  /dev/sdxy     (/)
-            $ mkfs.reiserfs  /dev/sdxy  (/var)
+#### boot (efi):
+$ mkfs.fat -F32 /dev/sdxy (fat32 for systemd boot manager)
+#### swap: 
+$ mkswap /dev/sdxy 
+$ swapon /dev/sdxy
+#### Linux partitions:
+```$ mkfs.ext4 /dev/sdxy```
+``` mkfs.btrfs  /dev/sdxy```    (/)
+```$ mkfs.reiserfs  /dev/sdxy```  (/var)
 
 
 Mount partitions:
