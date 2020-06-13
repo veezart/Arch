@@ -316,7 +316,7 @@ $ sudo systemctl enable lightdm.service
 ### Instalation windows manager                    
 ---------------------------                                                              
 
-####i3
+#### i3
 ```
 $ sudo pacman -S i3-gaps 
 $ sudo pacman -S rofi
@@ -326,7 +326,7 @@ $ sudo pacman -S lxappearance
 $ sudo pacman -S flameshot
 $ sudo pacman -S ttf-roboto
 ```
-#### i3 config file *~/i3/config*
+##### i3 config file *~/i3/config*
 ```
 $ Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -345,16 +345,16 @@ $ Assign application to workspace. Class can find by enter xprop in terminal and
 assign [class="window_class"] $ws1
 ```
     
-####Fonts:
+###### Fonts:
 
 ```$ fc-list : family style```
 > ~/i3/config
 
-#### use *lxappearance* 
+###### use *lxappearance* 
 > ~/.gtkrc-2.0
 > ~/.config/gtk-3.0
 
-#### Font Awesome:
+###### Font Awesome:
 
 > https://github.com/FortAwesome/Font-Awesome/releases
 > https://fontawesome.com/cheatsheet?from=io
@@ -363,8 +363,9 @@ $ unzip Font-Awesome-X.X.X.zip
 $ mkdit ~/.fonts
 $ mv fontawesome-webfont.ttf ~/.fonts
 ```
+###### Colors:
 ```
-    Colors:
+    # Colors:
     set $bg-color 	     $2f343f
     set $inactive-bg-color   $2f343f
     set $text-color          $f3f4f5
@@ -420,21 +421,21 @@ $ lsusb
         HUION Huion Tablet Pad pad                   id: 9   type: PAD
         HUION Huion Tablet Pen stylus                id: 10  type: STYLUS
 ```
-##### You can assign key combination to the buttons:
+###### You can assign key combination to the buttons:
 
 ```$ xsetwacom set "HUION Huion Tablet Pad pad" button 9 key Ctrl Z```
         
-##### key are numbered from top 1, 2, 3, 8, 9, 10 and on
+###### key are numbered from top 1, 2, 3, 8, 9, 10 and on
 
 ```$ xsetwacom set "HUION Huion Tablet Pen stylus" button 2 key Ctrl Z```
 
-##### buttons pen key are numbered 1 (tip), 2, 3
+###### buttons pen key are numbered 1 (tip), 2, 3
 
 ###### Reset button:
 
 ```$ xsetwacom set 'HUION Huion Tablet Pen stylus' Button 1 "button +1"```
 
-##### You can restrict the tablet input to that display like this:
+###### You can restrict the tablet input to that display like this:
 ```
 $ xrandr
         
