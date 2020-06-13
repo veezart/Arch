@@ -15,10 +15,10 @@ Instalation guide:
 
 Checksums:
 
-    Checksums check with PowerShell:
+Checksums check with PowerShell:
 
-    (Get-FileHash path/to/file.iso -Algorithm SHA1).Hash.ToUpper() -eq "SHA1 checksum".ToUpper()
-    (Get-FileHash path/to/file.iso -Algorithm MD5).Hash.ToUpper() -eq "MD5 checksum".ToUpper()
+> (Get-FileHash path/to/file.iso -Algorithm SHA1).Hash.ToUpper() -eq "SHA1 checksum".ToUpper()
+> (Get-FileHash path/to/file.iso -Algorithm MD5).Hash.ToUpper() -eq "MD5 checksum".ToUpper()
 
 Create bootable USB flash drive:
 --------------------------------
@@ -26,39 +26,39 @@ Create bootable USB flash drive:
 Use app Rufus:
 [https://rufus.ie/](https://rufus.ie/)
 
-# I Core installation
+$ I Core installation
 
 Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps. [https://github.com/MatMoul/archfi](https://github.com/MatMoul/archfi)                        
                                                                            
-        wget archfi.sf.net/archfi or wget matmoul.github.io/archfi                       
+wget archfi.sf.net/archfi or wget matmoul.github.io/archfi                       
 
-        # sh archfi                        
+>$sh archfi                        
                                                                           
                                                                                   
 
 Set the keyboard layout:
 ------------------------    
-    # loadkeys pl
+>$loadkeys pl
 
 Verify the boot mode:
 ---------------------
-    # ls /sys/firmware/efi/efivars
+>$ ls /sys/firmware/efi/efivars
 
 Connect to the internet:
 ------------------------
-    # ip link
-    # ping archlinux.org
+    $ ip link
+    $ ping archlinux.org
 
 Partition the disks:
 --------------------
     To identify these devices, use lsblk or fdisk
 
-        # fdisk -
-        # lsblk
+        $ fdisk -
+        $ lsblk
 
     Make partitions (efi 260 - 512MB)
 
-        # cfdisk /dev/sdx  (x=a,b,c…)
+        $ cfdisk /dev/sdx  (x=a,b,c…)
             /boot
             /
             /swap
@@ -68,28 +68,28 @@ Partition the disks:
     Format partitions
  
         boot (efi):
-            # mkfs.fat -F32 /dev/sdxy (fat32 for systemd boot manager)
+            $ mkfs.fat -F32 /dev/sdxy (fat32 for systemd boot manager)
         swap: 
-            # mkswap /dev/sdxy 
-            # swapon /dev/sdxy
+            $ mkswap /dev/sdxy 
+            $ swapon /dev/sdxy
         Linux partitions:
-            # mkfs.ext4 /dev/sdxy 
-            # mkfs.btrfs  /dev/sdxy     (/)
-            # mkfs.reiserfs  /dev/sdxy  (/var)
+            $ mkfs.ext4 /dev/sdxy 
+            $ mkfs.btrfs  /dev/sdxy     (/)
+            $ mkfs.reiserfs  /dev/sdxy  (/var)
 
 
 Mount partitions:
 -----------------
     
-    # mount /dev/sdxy /mnt (root)
+    $ mount /dev/sdxy /mnt (root)
     
-    # mkdir -p /mnt/boot (or efi)
-    # mount /dev/sdxy (efi partition)  /mnt/boot (or efi)
+    $ mkdir -p /mnt/boot (or efi)
+    $ mount /dev/sdxy (efi partition)  /mnt/boot (or efi)
 
-    # mkdir /mnt/home  
-    # mount /dev/sdxy /mnt/home
-    # mkdir /mnt/var
-    # mount /dev/sdxy /mnt/var
+    $ mkdir /mnt/home  
+    $ mount /dev/sdxy /mnt/home
+    $ mkdir /mnt/var
+    $ mount /dev/sdxy /mnt/var
 
 Instalation:
 ------------
@@ -99,16 +99,16 @@ Instalation:
                 vim /etc/pacman.d/mirrorlist (sort top 5 by closest localization)
 
         sudo pacman -S reflector
-        # reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+        $ reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 
     Install
 
-        # pacstrap /mnt base linux linux-firmware (optional: base-devel linux-headers networkmanager vim)
+        $ pacstrap /mnt base linux linux-firmware (optional: base-devel linux-headers networkmanager vim)
 
 Fstab
 -----
-    # genfstab -U /mnt >> /mnt/etc/fstab
+    $ genfstab -U /mnt >> /mnt/etc/fstab
         
         Check the resulting /mnt/etc/fstab file, and edit it in case of errors.
 
@@ -116,44 +116,44 @@ Chroot
 ------
     Change root into the new system:
 
-        # arch-chroot /mnt
+        $ arch-chroot /mnt
 
 
                                                                                    
 If used archfi install:
 -----------------------                                           	    
                                                                                   
-        # pacman -S linux-firmware base-devel linux-headers networkmanager vim      
+        $ pacman -S linux-firmware base-devel linux-headers networkmanager vim      
                                                                         
 
 
        
 Intel-ucode
 -----------
-    # pacman -S intel-ucode
-    # pacman -S btrfs-progs reiserfsprogs
+    $ pacman -S intel-ucode
+    $ pacman -S btrfs-progs reiserfsprogs
 
 Time zone
 ---------    
     Set the time zone:
 
-        # ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+        $ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
     
     Run hwclock to generate /etc/adjtime:
 
-        # hwclock --systohc --utc
+        $ hwclock --systohc --utc
 
 Localization
 ------------
-    # vim /etc/locale.gen
+    $ vim /etc/locale.gen
 
-        delete # at:   
+        delete $ at:   
             en_US.UTF-8 
             pl_PL.UTF-8  and save 
     
-    # locale-gen 
-    # echo LANG=pl_PL.UTF-8 > /etc/locale.conf 
-    # vim /etc/vconsole.conf 
+    $ locale-gen 
+    $ echo LANG=pl_PL.UTF-8 > /etc/locale.conf 
+    $ vim /etc/vconsole.conf 
         
         KEYMAP=pl 
         FONT=Lat2-Terminus16 
@@ -161,8 +161,8 @@ Localization
 
 Host
 ----
-    # echo nazwahosta > /etc/hostname 
-    # vim /etc/hosts
+    $ echo nazwahosta > /etc/hostname 
+    $ vim /etc/hosts
 
         127.0.0.1     localhost 
         ::1           localhost 
@@ -170,21 +170,21 @@ Host
 
 Network
 -------
-    # systemctl enable NetworkManager
+    $ systemctl enable NetworkManager
 
 
 Root password
 -------------
     Set the root password:
 
-        # passwd
+        $ passwd
 
 
 Boot loader
 -----------
  
-    # bootctl --path=/boot$esp install
-    # tree /boot
+    $ bootctl --path=/boot$esp install
+    $ tree /boot
 
 ``` bash
 /boot
@@ -202,13 +202,13 @@ Boot loader
 └── vmlinuz-linux
 ```
 
-    # vim /boot/loader/loader.conf
+    $ vim /boot/loader/loader.conf
 
 	    default arch
 	    timeout 5
         editor 0
 
-    # vim /boot/loader/entries/arch.conf
+    $ vim /boot/loader/entries/arch.conf
 
 	    title   Arch Linux
 	    linux   /vimlinuz-linux
@@ -224,39 +224,39 @@ Boot loader
 
             to select press v-start, y-copy, d-cut, P,p-paste
 
-    # bootctl status
-    # bootctl list
-    # bootctl --path=/boot update
+    $ bootctl status
+    $ bootctl list
+    $ bootctl --path=/boot update
     
 
 
 Reboot
 ------
-    # exit 
-    # umount -a 
-    # reboot
+    $ exit 
+    $ umount -a 
+    $ reboot
 
 Multilib repository
 -------------------
-    # vim /etc/pacman.conf 
-        delete # at [multilib] 
+    $ vim /etc/pacman.conf 
+        delete $ at [multilib] 
                     include = /etc/pacman.d/mirrorlist
                     Color   
          ad:           
 		            ILoveCandy
-    # pacman -Syu
+    $ pacman -Syu
 
 Personal account
 ----------------
-    # useradd -m -G audio,video,network,wheel,storage,rfkill -s /bin/bash username 
-    # passwd username 
+    $ useradd -m -G audio,video,network,wheel,storage,rfkill -s /bin/bash username 
+    $ passwd username 
  
-    # EDITOR=vim visudo
+    $ EDITOR=vim visudo
 
-        delete # at:   
+        delete $ at:   
 
             %wheel ALL=(ALL) ALL 
-    # exit
+    $ exit
 
 Login new user
 --------------
@@ -282,7 +282,7 @@ Disable:
 > $ sudo systemctl disable fstrim.timer
 
 
-# II Instalation display server manager and drivers          
+$ II Instalation display server manager and drivers          
                                                               
 Display server
 --------------
@@ -322,19 +322,19 @@ i3
 
 i3 config file ~/i3/config
 
-    # Media player controls
+    $ Media player controls
     bindsym XF86AudioPlay exec playerctl play
     bindsym XF86AudioPause exec playerctl pause
     bindsym XF86AudioNext exec playerctl next
     bindsym XF86AudioPrev exec playerctl previous
 
-    # Volume icon tray
+    $ Volume icon tray
     exec --no-startup-id volumeico
 
-    # Wallpaper
+    $ Wallpaper
     exec_always feh --bg-scale /path/to/image
 
-    # Assign application to workspace. Class can find by enter xprop in terminal and pick application windowSS.
+    $ Assign application to workspace. Class can find by enter xprop in terminal and pick application windowSS.
     assign [class="window_class"] $ws1
 
     
@@ -358,26 +358,26 @@ i3 config file ~/i3/config
    mv fontawesome-webfont.ttf ~/.fonts
 
     Colors:
-    set $bg-color 	         #2f343f
-    set $inactive-bg-color   #2f343f
-    set $text-color          #f3f4f5
-    set $inactive-text-color #676E7D
-    set $urgent-bg-color     #E53935
+    set $bg-color 	         $2f343f
+    set $inactive-bg-color   $2f343f
+    set $text-color          $f3f4f5
+    set $inactive-text-color $676E7D
+    set $urgent-bg-color     $E53935
 
-    # window colors
-    #                       border              background         text                 indicator
-    client.focused          $bg-color           $bg-color          $text-color          #00ff00
-    client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-    client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-    client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+    $ window colors
+    $                       border              background         text                 indicator
+    client.focused          $bg-color           $bg-color          $text-color          $00ff00
+    client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $00ff00
+    client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $00ff00
+    client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $00ff00
 
-    # bar
+    $ bar
     bar {
   	status_command i3blocks -c /home/booker/.i3/i3blocks.conf
 	colors {
 		    background $bg-color
-	    	separator #757575
-		    #                  border             background         text
+	    	separator $757575
+		    $                  border             background         text
 		    focused_workspace  $bg-color          $bg-color          $text-color
 		    $inactive-bg-color $inactive-bg-color $inactive-text-color
 		    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
