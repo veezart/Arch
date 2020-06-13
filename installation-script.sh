@@ -48,7 +48,7 @@ pcmanfm-gtk3
 alacritty
 flameshot
 fille-roller
-xfce4-power-manager
+#xfce4-power-manager
 polkit
 # common
 git
