@@ -13,6 +13,8 @@ https://www.archlinux.org/download/
 Instalation guide:
 https://wiki.archlinux.org/index.php/Installation_guide
 
+Packages installation script:
+https://github.com/veezart/Arch/blob/master/installation-script.sh
 #### Checksums:
 
 Checksums check with PowerShell:
