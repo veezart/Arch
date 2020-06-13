@@ -55,7 +55,20 @@ $ ping archlinux.org
 ```
 ### Partition the disks:
 --------------------
-To identify these devices, use lsblk or fdisk
+##### Actually need partitions:
+```
+SDD /dev/sda5  /boot   fat32      | 512M
+----------------------------------------
+SDD /dev/sda6  /mnt    btrfs      |  39G
+----------------------------------------
+HDD /dev/sdb1  /swap   swap       | 4GBM
+----------------------------------------
+HDD /dev/sdb2  /home   ext4       |  32G
+----------------------------------------
+HDD /dev/sda5  /var    reiserfs   |   8G
+----------------------------------------
+```
+###### To identify these devices, use lsblk or fdisk
 ```
 $ fdisk -l
 $ lsblk
