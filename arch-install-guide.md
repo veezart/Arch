@@ -5,13 +5,13 @@
 --------------
 
 Official site:
->https://www.archlinux.org
+https://www.archlinux.org
 
 Download link:
->https://www.archlinux.org/download/
+https://www.archlinux.org/download/
 
 Instalation guide:
->https://wiki.archlinux.org/index.php/Installation_guide
+https://wiki.archlinux.org/index.php/Installation_guide
 
 #### Checksums:
 
@@ -25,7 +25,7 @@ Checksums check with PowerShell:
 --------------------------------
     
 Use app Rufus:
-> https://rufus.ie/
+https://rufus.ie/
 
 ## I Core installation
 ----------------------
@@ -241,7 +241,7 @@ options root=PARTUUID=66e3f67d-f59a-4086-acdd-a6e248a3ee80 rw
 #### To find PARTUUID in Vim: 
 ```:r! blkid -s PARTUUID -o value /dev/sdxy``` (Arch root partition)
 
-> to select press v-start, y-copy, d-cut, P,p-paste
+to select press v-start, y-copy, d-cut, P,p-paste
 ```
 $ bootctl status
 $ bootctl list
@@ -264,7 +264,7 @@ include = /etc/pacman.d/mirrorlist
 Color   
 ```       
 ##### and ad:           
-> ILoveCandy
+```ILoveCandy```
 ```
 $ pacman -Syu
 ```
@@ -277,7 +277,7 @@ $ passwd username
 ```$ EDITOR=vim visudo```
 
 ##### delete $ at:   
-> %wheel ALL=(ALL) ALL 
+```%wheel ALL=(ALL) ALL``` 
 ```$ exit```
 
 ### Login new user
@@ -289,19 +289,19 @@ $ passwd username
 
 #### Check status:
     
-> $ systemctl status fstrim.service
+```$ systemctl status fstrim.service```
     
 #### Enable:
     
-> $ sudo systemctl enable fstrim.timer
+```$ sudo systemctl enable fstrim.timer```
     
 #### Verify:
 
-> $ sudo systemctl list-timers --all
+```$ sudo systemctl list-timers --all```
 
 #### Disable:
 
-> $ sudo systemctl disable fstrim.timer
+```$ sudo systemctl disable fstrim.timer```
 
 
 ## II Instalation display server manager and drivers          
@@ -364,16 +364,16 @@ assign [class="window_class"] $ws1
 ###### Fonts:
 
 ```$ fc-list : family style```
-> ~/i3/config
+*~/i3/config*
 
 ###### use *lxappearance* 
-> ~/.gtkrc-2.0
-> ~/.config/gtk-3.0
+*~/.gtkrc-2.0*
+*~/.config/gtk-3.0*
 
 ###### Font Awesome:
 
-> https://github.com/FortAwesome/Font-Awesome/releases
-> https://fontawesome.com/cheatsheet?from=io
+https://github.com/FortAwesome/Font-Awesome/releases
+https://fontawesome.com/cheatsheet?from=io
 ```
 $ unzip Font-Awesome-X.X.X.zip  
 $ mkdit ~/.fonts
