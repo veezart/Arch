@@ -5,13 +5,13 @@ Usefull links:
 --------------
 
 Official site:
-[www.archlinux.org](https://www.archlinux.org)
+>https://www.archlinux.org
 
 Download link:
-[https://www.archlinux.org/download/](https://www.archlinux.org/download/)
+>https://www.archlinux.org/download/
 
 Instalation guide:
-[https://wiki.archlinux.org/index.php/Installation_guide](https://wiki.archlinux.org/index.php/Installation_guide)
+>https://wiki.archlinux.org/index.php/Installation_guide
 
 Checksums:
 
@@ -38,11 +38,19 @@ wget archfi.sf.net/archfi or wget matmoul.github.io/archfi
 
 Set the keyboard layout:
 ------------------------    
+<<<<<<< HEAD
 >$loadkeys pl
 
 Verify the boot mode:
 ---------------------
 >$ ls /sys/firmware/efi/efivars
+=======
+># loadkeys pl
+
+Verify the boot mode:
+---------------------
+># ls /sys/firmware/efi/efivars
+>>>>>>> f5a0af439f2e911eb0ec7c45d24656e96bf7957e
 
 Connect to the internet:
 ------------------------
