@@ -69,124 +69,125 @@ $ lsblk
 ### Format partitions
  
 #### boot (efi):
-$ mkfs.fat -F32 /dev/sdxy (fat32 for systemd boot manager)
-#### swap: 
+```$ mkfs.fat -F32 /dev/sdxy``` (fat32 for systemd boot manager)
+#### swap:
+```
 $ mkswap /dev/sdxy 
 $ swapon /dev/sdxy
+```
 #### Linux partitions:
-```$ mkfs.ext4 /dev/sdxy```
-``` mkfs.btrfs  /dev/sdxy```    (/)
-```$ mkfs.reiserfs  /dev/sdxy```  (/var)
-
+```
+$ mkfs.ext4 /dev/sdxy
+$ mkfs.btrfs  /dev/sdxy   (/)
+$ mkfs.reiserfs  /dev/sdxy  (/var)
+```
 
 ### Mount partitions:
------------------
+-----------------    
+```
+$ mount /dev/sdxy /mnt``` (root)
     
-```$ mount /dev/sdxy /mnt``` (root)
-    
-```$ mkdir -p /mnt/boot``` (or efi)
-```$ mount /dev/sdxy   /mnt/boot``` (or efi, efi partition)
+$ mkdir -p /mnt/boot``` (or efi)
+$ mount /dev/sdxy   /mnt/boot``` (or efi, efi partition)
 
-```$ mkdir /mnt/home```  
-```$ mount /dev/sdxy /mnt/home```
-```$ mkdir /mnt/var```
-```$ mount /dev/sdxy /mnt/var```
+$ mkdir /mnt/home 
+$ mount /dev/sdxy /mnt/home
+$ mkdir /mnt/var
+$ mount /dev/sdxy /mnt/var
+```
 
 ### Instalation:
 ------------
-    Select the mirrors
+#### Select the mirrors
 
-        Edit
-                vim /etc/pacman.d/mirrorlist (sort top 5 by closest localization)
+##### Edit
+```$ vim /etc/pacman.d/mirrorlist (sort top 5 by closest localization)```
 
-        sudo pacman -S reflector
-        $ reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+```$ sudo pacman -S reflector```
 
+```$ reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist```
 
-    Install
+##### Install
 
-        $ pacstrap /mnt base linux linux-firmware (optional: base-devel linux-headers networkmanager vim)
+```$ pacstrap /mnt base linux linux-firmware (optional: base-devel linux-headers networkmanager vim)```
 
-Fstab
+### Fstab
 -----
-    $ genfstab -U /mnt >> /mnt/etc/fstab
+```$ genfstab -U /mnt >> /mnt/etc/fstab```
         
-        Check the resulting /mnt/etc/fstab file, and edit it in case of errors.
+Check the resulting */mnt/etc/fstab* file, and edit it in case of errors.
 
-Chroot
+### Chroot
 ------
-    Change root into the new system:
+#### Change root into the new system:
 
-        $ arch-chroot /mnt
+```$ arch-chroot /mnt```
 
-
-                                                                                   
-If used archfi install:
+### If used archfi install:
 -----------------------                                           	    
                                                                                   
-        $ pacman -S linux-firmware base-devel linux-headers networkmanager vim      
-                                                                        
-
-
-       
-Intel-ucode
+```$ pacman -S linux-firmware base-devel linux-headers networkmanager vim```
+                                                                           
+### Intel-ucode
 -----------
-    $ pacman -S intel-ucode
-    $ pacman -S btrfs-progs reiserfsprogs
-
-Time zone
+```
+$ pacman -S intel-ucode
+$ pacman -S btrfs-progs reiserfsprogs
+```
+### Time zone
 ---------    
-    Set the time zone:
+#### Set the time zone:
 
-        $ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+```$ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime```
     
-    Run hwclock to generate /etc/adjtime:
+#### Run hwclock to generate /etc/adjtime:
 
-        $ hwclock --systohc --utc
+```$ hwclock --systohc --utc```
 
-Localization
+### Localization
 ------------
-    $ vim /etc/locale.gen
-
-        delete $ at:   
-            en_US.UTF-8 
-            pl_PL.UTF-8  and save 
-    
-    $ locale-gen 
-    $ echo LANG=pl_PL.UTF-8 > /etc/locale.conf 
-    $ vim /etc/vconsole.conf 
-        
+```$ vim /etc/locale.gen```
+```
+delete $ at:   
+en_US.UTF-8 
+pl_PL.UTF-8
+```
+and save 
+```    
+$ locale-gen 
+$ echo LANG=pl_PL.UTF-8 > /etc/locale.conf 
+$ vim /etc/vconsole.conf 
+```     
+```
         KEYMAP=pl 
         FONT=Lat2-Terminus16 
         FONT_MAP=8859-2
-
-Host
+```
+### Host
 ----
+```
     $ echo nazwahosta > /etc/hostname 
     $ vim /etc/hosts
 
         127.0.0.1     localhost 
         ::1           localhost 
         127.0.1.1     nazwahosta.localdomain   nazwahosta
-
-Network
+```
+### Network
 -------
-    $ systemctl enable NetworkManager
+```$ systemctl enable NetworkManager```
 
-
-Root password
+### Root password
 -------------
-    Set the root password:
+#### Set the root password:
+```$ passwd```
 
-        $ passwd
-
-
-Boot loader
+### Boot loader
 -----------
- 
-    $ bootctl --path=/boot$esp install
-    $ tree /boot
-
+``` 
+$ bootctl --path=/boot$esp install
+$ tree /boot
+```
 ``` bash
 /boot
 ├── EFI
@@ -203,163 +204,168 @@ Boot loader
 └── vmlinuz-linux
 ```
 
-    $ vim /boot/loader/loader.conf
+```$ vim /boot/loader/loader.conf```
+```
+default arch
+timeout 5
+editor 0
+```
+```$ vim /boot/loader/entries/arch.conf```
+```
+title   Arch Linux
+linux   /vimlinuz-linux
+initrd  /intel-ucode.img  
+initrd  /initramfs-linux.img
+options root=PARTUUID=66e3f67d-f59a-4086-acdd-a6e248a3ee80 rw 
+```
+(or *options root=/dev/nvme0n1p3 rw intel_iommu=on*)
 
-	    default arch
-	    timeout 5
-        editor 0
+#### To find PARTUUID in Vim: 
+```:r! blkid -s PARTUUID -o value /dev/sdxy``` (Arch root partition)
 
-    $ vim /boot/loader/entries/arch.conf
-
-	    title   Arch Linux
-	    linux   /vimlinuz-linux
-        initrd  /intel-ucode.img  
-	    initrd  /initramfs-linux.img
-	    options root=PARTUUID=66e3f67d-f59a-4086-acdd-a6e248a3ee80 rw 
-
-            (or options root=/dev/nvme0n1p3 rw intel_iommu=on)
-
-    To find PARTUUID in Vim: 
-
-        :r! blkid -s PARTUUID -o value /dev/sdxy (Arch root partition)
-
-            to select press v-start, y-copy, d-cut, P,p-paste
-
-    $ bootctl status
-    $ bootctl list
-    $ bootctl --path=/boot update
-    
+> to select press v-start, y-copy, d-cut, P,p-paste
+```
+$ bootctl status
+$ bootctl list
+$ bootctl --path=/boot update
+```    
 
 
-Reboot
+### Reboot
 ------
-    $ exit 
-    $ umount -a 
-    $ reboot
-
-Multilib repository
+```
+$ exit 
+$ umount -a 
+$ reboot
+```
+### Multilib repository
 -------------------
-    $ vim /etc/pacman.conf 
-        delete $ at [multilib] 
-                    include = /etc/pacman.d/mirrorlist
-                    Color   
-         ad:           
-		            ILoveCandy
-    $ pacman -Syu
-
-Personal account
+```$ vim /etc/pacman.conf``` 
+delete $ at: 
+```
+[multilib] 
+include = /etc/pacman.d/mirrorlist
+Color   
+```       
+##### and ad:           
+> ILoveCandy
+```
+$ pacman -Syu
+```
+### Personal account
 ----------------
-    $ useradd -m -G audio,video,network,wheel,storage,rfkill -s /bin/bash username 
-    $ passwd username 
- 
-    $ EDITOR=vim visudo
+```
+$ useradd -m -G audio,video,network,wheel,storage,rfkill -s /bin/bash username 
+$ passwd username 
+``` 
+```$ EDITOR=vim visudo```
 
-        delete $ at:   
+##### delete $ at:   
+> %wheel ALL=(ALL) ALL 
+```$ exit```
 
-            %wheel ALL=(ALL) ALL 
-    $ exit
-
-Login new user
+### Login new user
 --------------
     ***
 
-Enable periodic TRIM for SSD
+### Enable periodic TRIM for SSD
 ----------------------------
 
-**Check status:**
+#### Check status:
     
 > $ systemctl status fstrim.service
     
-Enable:
+#### Enable:
     
 > $ sudo systemctl enable fstrim.timer
     
-Verify:
+#### Verify:
 
 > $ sudo systemctl list-timers --all
 
-Disable:
+#### Disable:
 
 > $ sudo systemctl disable fstrim.timer
 
 
-$ II Instalation display server manager and drivers          
+## II Instalation display server manager and drivers          
                                                               
-Display server
+### Display server
 --------------
-    $ sudo pacman -S xorg xorg-xinit xterm 
-    $ startx 
-    $ exit
-
-Graphic drivers
+```
+$ sudo pacman -S xorg xorg-xinit xterm 
+$ startx 
+$ exit
+```
+### Graphic drivers
 ---------------
-    $ lspci | grep -e VGA
+```$ lspci | grep -e VGA```
 
-    if necesery
-
-        $ sudo pacman -S xf86-video
-        $ sudo pacman -S nvidia 
-
-Display manager
+##### if necesery
+```
+$ sudo pacman -S xf86-video
+$ sudo pacman -S nvidia 
+```
+### Display manager
 ---------------
-    $ sudo pacman -S lightdm 
-    $ sudo pacman -S lightdm-gtk-greeter lightdm-gtk-greeter-settings 
-    $ sudo systemctl enable lightdm.service
-
-
-
-Instalation windows manager                    
+```
+$ sudo pacman -S lightdm 
+$ sudo pacman -S lightdm-gtk-greeter lightdm-gtk-greeter-settings 
+$ sudo systemctl enable lightdm.service
+```
+### Instalation windows manager                    
 ---------------------------                                                              
 
-i3
+####i3
+```
+$ sudo pacman -S i3-gaps 
+$ sudo pacman -S rofi
+$ sudo pacman -S picom 
+$ sudo pacman -S polkit 
+$ sudo pacman -S lxappearance
+$ sudo pacman -S flameshot
+$ sudo pacman -S ttf-roboto
+```
+#### i3 config file *~/i3/config*
+```
+$ Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+```
+```
+$ Volume icon tray
+exec --no-startup-id volumeico
 
-    $ sudo pacman -S i3-gaps 
-    $ sudo pacman -S rofi
-    $ sudo pacman -S picom 
-    $ sudo pacman -S polkit 
-    $ sudo pacman -S lxappearance
-    $ sudo pacman -S flameshot
-    $ sudo pacman -S ttf-roboto
+$ Wallpaper
+exec_always feh --bg-scale /path/to/image
 
-i3 config file ~/i3/config
-
-    $ Media player controls
-    bindsym XF86AudioPlay exec playerctl play
-    bindsym XF86AudioPause exec playerctl pause
-    bindsym XF86AudioNext exec playerctl next
-    bindsym XF86AudioPrev exec playerctl previous
-
-    $ Volume icon tray
-    exec --no-startup-id volumeico
-
-    $ Wallpaper
-    exec_always feh --bg-scale /path/to/image
-
-    $ Assign application to workspace. Class can find by enter xprop in terminal and pick application windowSS.
-    assign [class="window_class"] $ws1
-
+$ Assign application to workspace. Class can find by enter xprop in terminal and pick application windowSS.
+assign [class="window_class"] $ws1
+```
     
-    Fonts:
+####Fonts:
 
-    $ fc-list : family style
-        ~/i3/config
+```$ fc-list : family style```
+> ~/i3/config
 
-    use lxappearance 
-        
-        ~/.gtkrc-2.0
-        ~/.config/gtk-3.0
+#### use *lxappearance* 
+> ~/.gtkrc-2.0
+> ~/.config/gtk-3.0
 
-    Font Awesome:
+#### Font Awesome:
 
-    [https://github.com/FortAwesome/Font-Awesome/releases](https://github.com/FortAwesome/Font-Awesome/releases)
-    [https://fontawesome.com/cheatsheet?from=io](https://fontawesome.com/cheatsheet?from=io)
-   
-   unzip Font-Awesome-X.X.X.zip  
-   mkdit ~/.fonts
-   mv fontawesome-webfont.ttf ~/.fonts
-
+> https://github.com/FortAwesome/Font-Awesome/releases
+> https://fontawesome.com/cheatsheet?from=io
+```
+$ unzip Font-Awesome-X.X.X.zip  
+$ mkdit ~/.fonts
+$ mv fontawesome-webfont.ttf ~/.fonts
+```
+```
     Colors:
-    set $bg-color 	         $2f343f
+    set $bg-color 	     $2f343f
     set $inactive-bg-color   $2f343f
     set $text-color          $f3f4f5
     set $inactive-text-color $676E7D
@@ -371,70 +377,73 @@ i3 config file ~/i3/config
     client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $00ff00
     client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $00ff00
     client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $00ff00
-
+```
+```
     $ bar
     bar {
   	status_command i3blocks -c /home/booker/.i3/i3blocks.conf
 	colors {
-		    background $bg-color
+		background $bg-color
 	    	separator $757575
 		    $                  border             background         text
 		    focused_workspace  $bg-color          $bg-color          $text-color
 		    $inactive-bg-color $inactive-bg-color $inactive-text-color
 		    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	        }
-
-Huion tablet driver
+```
+#### Huion tablet driver
 -------------------
 
-    $ sudo pacman -S usbutils
+$ sudo pacman -S usbutils
 
-    $ lsusb
+$ lsusb
 
-    $ vim /etc/X11/xorg.conf.d/50-tablet.conf 
-
+```$ vim /etc/X11/xorg.conf.d/50-tablet.conf``` 
+```
         Section "InputClass"
             Identifier "Tablet"
             Driver "wacom"
             MatchDevicePath "/dev/input/event*"
             MatchUSBID "<VID>:<PID>"
         EndSection
-
+```
+```
         :r! lsusb
 
             Bus 001 Device 003: ID 256c:006d HUION Huion Tablet
 
             "<VID>:<PID>" is it ID "256c:006d"
-
+```
+```
     $ xsetwacom list
 
         HUION Huion Tablet Pad pad                   id: 9   type: PAD
         HUION Huion Tablet Pen stylus                id: 10  type: STYLUS
+```
+##### You can assign key combination to the buttons:
 
-    You can assign key combination to the buttons:
-
-        $ xsetwacom set "HUION Huion Tablet Pad pad" button 9 key Ctrl Z
+```$ xsetwacom set "HUION Huion Tablet Pad pad" button 9 key Ctrl Z```
         
-             key are numbered from top 1, 2, 3, 8, 9, 10 and on
+##### key are numbered from top 1, 2, 3, 8, 9, 10 and on
 
-        $ xsetwacom set "HUION Huion Tablet Pen stylus" button 2 key Ctrl Z
+```$ xsetwacom set "HUION Huion Tablet Pen stylus" button 2 key Ctrl Z```
 
-            buttons pen key are numbered 1 (tip), 2, 3
+##### buttons pen key are numbered 1 (tip), 2, 3
 
-        Reset buytton:
+###### Reset button:
 
-            $ xsetwacom set 'HUION Huion Tablet Pen stylus' Button 1 "button +1"
+```$ xsetwacom set 'HUION Huion Tablet Pen stylus' Button 1 "button +1"```
 
-    You can restrict the tablet input to that display like this:
-
-        $ xrandr
+##### You can restrict the tablet input to that display like this:
+```
+$ xrandr
         
-            HDMI-3 connected 1440x900+0+0 (normal left inverted right x axis y axis) 408mm x 255mm    
+HDMI-3 connected 1440x900+0+0 (normal left inverted right x axis y axis) 408mm x 255mm    
             
-        $ xsetwacom set "HUION Huion Tablet Pen stylus" MapToOutput HDMI-0
-        or
-        $ xinput set-prop "HUION Huion Tablet Pen stylus" HDMI-0
-
+$ xsetwacom set "HUION Huion Tablet Pen stylus" MapToOutput HDMI-0
+or
+$ xinput set-prop "HUION Huion Tablet Pen stylus" HDMI-0
+```
 
 
 
