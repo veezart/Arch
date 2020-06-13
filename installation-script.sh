@@ -53,6 +53,9 @@ polkit
 # common
 git
 reflector
+# multimedia
+mpv
+youtube-dl
 )
 
 
