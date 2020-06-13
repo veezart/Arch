@@ -395,9 +395,9 @@ $ mv fontawesome-webfont.ttf ~/.fonts
 #### Huion tablet driver
 -------------------
 
-$ sudo pacman -S usbutils
+```$ sudo pacman -S usbutils```
 
-$ lsusb
+```$ lsusb```
 
 ```$ vim /etc/X11/xorg.conf.d/50-tablet.conf``` 
 ```
