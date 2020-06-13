@@ -31,40 +31,41 @@ Use app Rufus:
 
 Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps. [https://github.com/MatMoul/archfi](https://github.com/MatMoul/archfi)                        
                                                                            
-> wget archfi.sf.net/archfi or wget matmoul.github.io/archfi                       
+```wget archfi.sf.net/archfi or wget matmoul.github.io/archfi```                       
 
 ```$sh archfi```                        
                                                                              
-## Set the keyboard layout:
+### Set the keyboard layout:
 ------------------------    
 ```$loadkeys pl```
 
-## Verify the boot mode:
+### Verify the boot mode:
 ---------------------
 ```$ ls /sys/firmware/efi/efivars```
 
-## Connect to the internet:
+### Connect to the internet:
 ------------------------
 ```
 $ ip link
 $ ping archlinux.org
 ```
-## Partition the disks:
+### Partition the disks:
 --------------------
 To identify these devices, use lsblk or fdisk
 ```
 $ fdisk -l
 $ lsblk
 ```
-Make partitions (efi 260 - 512MB)
+### Make partitions (efi 260 - 512MB)
 
 ```$ cfdisk /dev/sdx  (x=a,b,c…)```
->/boot
->/
->/swap
->/home
->/var    (8-12G)
-    
+```
+/boot
+/
+/swap
+/home
+/var    (8-12G)
+```    
 ### Format partitions
  
 #### boot (efi):
@@ -78,20 +79,20 @@ $ swapon /dev/sdxy
 ```$ mkfs.reiserfs  /dev/sdxy```  (/var)
 
 
-Mount partitions:
+### Mount partitions:
 -----------------
     
-    $ mount /dev/sdxy /mnt (root)
+```$ mount /dev/sdxy /mnt``` (root)
     
-    $ mkdir -p /mnt/boot (or efi)
-    $ mount /dev/sdxy (efi partition)  /mnt/boot (or efi)
+```$ mkdir -p /mnt/boot``` (or efi)
+```$ mount /dev/sdxy   /mnt/boot``` (or efi, efi partition)
 
-    $ mkdir /mnt/home  
-    $ mount /dev/sdxy /mnt/home
-    $ mkdir /mnt/var
-    $ mount /dev/sdxy /mnt/var
+```$ mkdir /mnt/home```  
+```$ mount /dev/sdxy /mnt/home```
+```$ mkdir /mnt/var```
+```$ mount /dev/sdxy /mnt/var```
 
-Instalation:
+### Instalation:
 ------------
     Select the mirrors
 
