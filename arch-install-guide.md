@@ -1,4 +1,4 @@
-Arch Linux Installation Guide
+# Arch Linux Installation Guide
 -----------------------------
 
 Usefull links:
@@ -17,14 +17,15 @@ Checksums:
 
 Checksums check with PowerShell:
 
-> (Get-FileHash path/to/file.iso -Algorithm SHA1).Hash.ToUpper() -eq "SHA1 checksum".ToUpper()
-> (Get-FileHash path/to/file.iso -Algorithm MD5).Hash.ToUpper() -eq "MD5 checksum".ToUpper()
+```(Get-FileHash path/to/file.iso -Algorithm SHA1).Hash.ToUpper() -eq "SHA1 checksum".ToUpper()```
+
+```(Get-FileHash path/to/file.iso -Algorithm MD5).Hash.ToUpper() -eq "MD5 checksum".ToUpper()```
 
 Create bootable USB flash drive:
 --------------------------------
     
 Use app Rufus:
-[https://rufus.ie/](https://rufus.ie/)
+> https://rufus.ie/
 
 $ I Core installation
 
