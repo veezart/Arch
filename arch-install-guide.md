@@ -31,7 +31,7 @@ Use app Rufus:
 Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps. [https://github.com/MatMoul/archfi](https://github.com/MatMoul/archfi)                        
                                                                            
         wget archfi.sf.net/archfi or wget matmoul.github.io/archfi                       
-                                                                           
+
         # sh archfi                        
                                                                           
                                                                                   
@@ -58,18 +58,25 @@ Partition the disks:
 
     Make partitions (efi 260 - 512MB)
 
-        # cfdisk /dev/sdx  (x=a,b,c…) 
+        # cfdisk /dev/sdx  (x=a,b,c…)
+            /boot
+            /
+            /swap
+            /home
+            /var    (8-12G)
     
     Format partitions
-
-        swap: 
-            # mkswap /dev/sdxy 
-            # swapon /dev/sdxy 
+ 
         boot (efi):
             # mkfs.fat -F32 /dev/sdxy (fat32 for systemd boot manager)
+        swap: 
+            # mkswap /dev/sdxy 
+            # swapon /dev/sdxy
+        Linux partitions:
+            # mkfs.ext4 /dev/sdxy 
+            # mkfs.btrfs  /dev/sdxy     (/)
+            # mkfs.reiserfs  /dev/sdxy  (/var)
 
-        Linux partitions
-            # mkfs.ext4 /dev/sdxy (or .btrfs)
 
 Mount partitions:
 -----------------
@@ -79,10 +86,10 @@ Mount partitions:
     # mkdir -p /mnt/boot (or efi)
     # mount /dev/sdxy (efi partition)  /mnt/boot (or efi)
 
-    # mkdir /mnt/home 
-    
-     
+    # mkdir /mnt/home  
     # mount /dev/sdxy /mnt/home
+    # mkdir /mnt/var
+    # mount /dev/sdxy /mnt/var
 
 Instalation:
 ------------
@@ -90,6 +97,10 @@ Instalation:
 
         Edit
                 vim /etc/pacman.d/mirrorlist (sort top 5 by closest localization)
+
+        sudo pacman -S reflector
+        # reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+
 
     Install
 
@@ -105,7 +116,7 @@ Chroot
 ------
     Change root into the new system:
 
-        # arch-chroot /
+        # arch-chroot /mnt
 
 
                                                                                    
@@ -120,6 +131,7 @@ If used archfi install:
 Intel-ucode
 -----------
     # pacman -S intel-ucode
+    # pacman -S btrfs-progs reiserfsprogs
 
 Time zone
 ---------    

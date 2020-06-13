@@ -3,15 +3,19 @@
 
 
 list=(
-
+# drivers
+nvidia
+intel-ucode
+btrfs-progs
+reiserfsprogs
+usbutils
+networkmanager
 # display server
 xorg
 xorg-xinit
 # display manager
 lightdm
 lightdm-gtk-greeter lightdm-gtk-greeter-settings
-# driver
-sudo pacman -S nvidia
 # install sound
 pulseaudio
 pulseaudio-alsa
@@ -30,6 +34,8 @@ playerctl
 i3-gaps
 i3lock
 i3block
+# coompositor
+picom
 # apperance
 lxappearance
 neofetch
@@ -44,20 +50,9 @@ flameshot
 fille-roller
 xfce4-power-manager
 polkit
-# coompositor
-picom
 # common
-usbutils
 git
-
-
-
-
-
-
-
-
-
+reflector
 )
 
 
@@ -66,3 +61,4 @@ sudo pacman -S --noconfirm --needed $name
 done
 
 sudo systemctl enable lightdm.service
+sudo systemctl enable NetworkManager
