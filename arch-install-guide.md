@@ -265,21 +265,21 @@ Login new user
 Enable periodic TRIM for SSD
 ----------------------------
 
-    **Check status:**
+**Check status:**
     
-    > $ systemctl status fstrim.service
+> $ systemctl status fstrim.service
     
-    Enable:
+Enable:
     
-    > $ sudo systemctl enable fstrim.timer
+> $ sudo systemctl enable fstrim.timer
     
-    Verify:
+Verify:
 
-    > $ sudo systemctl list-timers --all
+> $ sudo systemctl list-timers --all
 
-    Disable:
+Disable:
 
-    > $ sudo systemctl disable fstrim.timer
+> $ sudo systemctl disable fstrim.timer
 
 
 # II Instalation display server manager and drivers          
