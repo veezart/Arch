@@ -89,10 +89,10 @@ $ mkfs.reiserfs  /dev/sdxy  (/var)
 ### Mount partitions:
 -----------------    
 ```
-$ mount /dev/sdxy /mnt``` (root)
+$ mount /dev/sdxy /mnt           (root)
     
-$ mkdir -p /mnt/boot``` (or efi)
-$ mount /dev/sdxy   /mnt/boot``` (or efi, efi partition)
+$ mkdir -p /mnt/boot             (or efi)
+$ mount /dev/sdxy   /mnt/boot    (or efi, efi partition)
 
 $ mkdir /mnt/home 
 $ mount /dev/sdxy /mnt/home
@@ -156,7 +156,7 @@ delete $ at:
 en_US.UTF-8 
 pl_PL.UTF-8
 ```
-and save 
+###### and save 
 ```    
 $ locale-gen 
 $ echo LANG=pl_PL.UTF-8 > /etc/locale.conf 
@@ -233,8 +233,6 @@ $ bootctl status
 $ bootctl list
 $ bootctl --path=/boot update
 ```    
-
-
 ### Reboot
 ------
 ```
