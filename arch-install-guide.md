@@ -15,6 +15,9 @@ https://wiki.archlinux.org/index.php/Installation_guide
 
 Packages installation script:
 https://github.com/veezart/Arch/blob/master/installation-script.sh
+
+i3 config file:
+https://github.com/veezart/Arch/blob/master/config
 #### Checksums:
 
 Checksums check with PowerShell:
