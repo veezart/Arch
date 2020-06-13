@@ -5,13 +5,13 @@ Usefull links:
 --------------
 
 Official site:
-[www.archlinux.org](https://www.archlinux.org)
+>https://www.archlinux.org
 
 Download link:
-[https://www.archlinux.org/download/](https://www.archlinux.org/download/)
+>https://www.archlinux.org/download/
 
 Instalation guide:
-[https://wiki.archlinux.org/index.php/Installation_guide](https://wiki.archlinux.org/index.php/Installation_guide)
+>https://wiki.archlinux.org/index.php/Installation_guide
 
 Checksums:
 
@@ -38,11 +38,11 @@ Instead You can use archfi script instead but remember to completete instalation
 
 Set the keyboard layout:
 ------------------------    
-    # loadkeys pl
+># loadkeys pl
 
 Verify the boot mode:
 ---------------------
-    # ls /sys/firmware/efi/efivars
+># ls /sys/firmware/efi/efivars
 
 Connect to the internet:
 ------------------------
