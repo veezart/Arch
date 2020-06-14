@@ -16,7 +16,7 @@ neofetch
 )
 
 
-for name in "{list[@]}" ; do
+for name in "${list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
 done
 
