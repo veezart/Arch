@@ -51,6 +51,7 @@ fille-roller
 #xfce4-power-manager
 polkit
 # common
+tree
 git
 reflector
 # multimedia
