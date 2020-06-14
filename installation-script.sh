@@ -17,23 +17,22 @@ list=(
 # coompositor
 
 # apperance
-lxappearance
-neofetch
+
 # tools
 xclip
 
-htop
+
 mc
-pcmanfm-gtk3
+
 alacritty
 flameshot
-fille-roller
+
 #xfce4-power-manager
-polkit
+
 # common
-tree
+
 git
-reflector
+
 # multimedia
 mpv
 youtube-dl
