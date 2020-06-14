@@ -1,3 +1,5 @@
+#!/bin/bash
+
 list=(
 avahi
 nss-mdns
