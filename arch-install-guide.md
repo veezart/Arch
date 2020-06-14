@@ -209,6 +209,7 @@ $ vim /etc/vconsole.conf
 -----------
 ``` 
 $ bootctl --path=/boot$esp install
+$ pacman -S tree
 $ tree /boot
 ```
 ``` bash
@@ -236,7 +237,7 @@ editor 0
 ```$ vim /boot/loader/entries/arch.conf```
 ```
 title   Arch Linux
-linux   /vimlinuz-linux
+linux   /vmlinuz-linux
 initrd  /intel-ucode.img  
 initrd  /initramfs-linux.img
 options root=PARTUUID=66e3f67d-f59a-4086-acdd-a6e248a3ee80 rw 
