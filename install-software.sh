@@ -8,6 +8,7 @@ xclip
 mpv
 youtube-dl
 mc
+keepassxc
 #xfce4-power-manager
 )
 
