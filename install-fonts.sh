@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Fira Code, Iosevka Slab, Iosevka Term
 list=(
 ttf-roboto
 
