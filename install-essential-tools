@@ -2,6 +2,7 @@
 
 list=(
 kitty
+mc
 feh
 pcmanfm-gtk3
 fille-roller
@@ -13,6 +14,6 @@ arandr
 )
 
 
-for name in "{list[@]}" ; do
+for name in "${list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
 done
