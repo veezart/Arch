@@ -44,13 +44,6 @@ Set the keyboard layout:
 Verify the boot mode:
 ---------------------
 >$ ls /sys/firmware/efi/efivars
-=======
-># loadkeys pl
-
-Verify the boot mode:
----------------------
-># ls /sys/firmware/efi/efivars
->>>>>>> f5a0af439f2e911eb0ec7c45d24656e96bf7957e
 
 Connect to the internet:
 ------------------------
