@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 list=(
 kitty
 feh
