@@ -1,0 +1,18 @@
+#!/bin/bash
+
+list=(
+kitty
+feh
+pcmanfm-gtk3
+fille-roller
+polkit
+tree
+reflector
+htop
+arandr
+)
+
+
+for name in "{list[@]}" ; do
+sudo pacman -S --noconfirm --needed $name
+done
