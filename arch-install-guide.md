@@ -50,16 +50,10 @@ https://github.com/MatMoul/archfi
 
 ### Verify the boot mode:
 ---------------------
-<<<<<<< HEAD
->$ ls /sys/firmware/efi/efivars
-
-Connect to the internet:
-=======
-```$ ls /sys/firmware/efi/efivars```
+```>$ ls /sys/firmware/efi/efivars```
 
 ### Connect to the internet:
->>>>>>> 3aa62f9026fb619555726db4561ccd119ebedd9c
-------------------------
+----------------------------
 ```
 $ ip link
 $ ping archlinux.org
