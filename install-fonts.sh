@@ -1,5 +1,5 @@
 #!/bin/bash
-# Fira Code, Iosevka Slab, Iosevka Term
+# Fira Code, Iosevka Slab, Iosevka Term, Font Awesome
 list=(
 ttf-roboto
 
