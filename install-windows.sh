@@ -1,6 +1,9 @@
+#!/bin/bash
+
 list=(
 xorg
 xorg-xinit
+xterm
 lightdm
 lightdm-gtk-greeter lightdm-gtk-greeter-settings
 i3-gaps
