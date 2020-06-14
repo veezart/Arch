@@ -1,0 +1,20 @@
+#!/bin/bash
+#set -e
+
+
+list=(
+cups
+cups-pdf
+ghostscript
+gsfonts
+gutenprint
+gtk3-print-backends
+libcups
+system-config-printer
+)
+
+for name in "{list[@]}" ; do
+sudo pacman -S --noconfirm --needed $name
+done
+
+sudo systemctl enable org.cups.cupsd.service
