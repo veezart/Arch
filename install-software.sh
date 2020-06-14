@@ -13,6 +13,6 @@ keepassxc
 )
 
 
-for name in "{list[@]}" ; do
-sudo pacman -S --noconfirm --needed $name
+for name in "${list[@]}" ; do
+sudo pacman -S --needed $name
 done
