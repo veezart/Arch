@@ -44,5 +44,3 @@ for name in "{list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
 done
 
-sudo systemctl enable lightdm.service
-sudo systemctl enable NetworkManager
