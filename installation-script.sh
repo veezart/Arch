@@ -19,23 +19,15 @@ list=(
 # apperance
 
 # tools
-xclip
 
 
-mc
-
-alacritty
-flameshot
 
 #xfce4-power-manager
 
 # common
 
-git
-
 # multimedia
-mpv
-youtube-dl
+
 )
 
 
