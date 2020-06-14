@@ -8,6 +8,8 @@ i3lock
 i3block
 rofi
 picom
+lxappearance
+neofetch
 )
 
 
