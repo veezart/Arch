@@ -9,6 +9,7 @@ btrfs-progs
 reiserfsprogs
 usbutils
 udisks2
+udiskie
 )
 
 
