@@ -8,6 +8,7 @@ e2fsprogs
 btrfs-progs
 reiserfsprogs
 usbutils
+udisks2
 )
 
 
