@@ -8,6 +8,7 @@ xclip
 mpv
 youtube-dl
 keepassxc
+zathura
 #xfce4-power-manager
 )
 
