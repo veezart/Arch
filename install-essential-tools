@@ -3,6 +3,8 @@
 list=(
 bash-comkpletion
 kitty
+ranger
+python-pillow #image preview
 mc
 feh
 pcmanfm-gtk3
