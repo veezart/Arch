@@ -315,10 +315,14 @@ $ passwd username
 ### Display server
 --------------
 ```
-$ sudo pacman -S xorg xorg-xinit xterm 
+$ sudo pacman -S xorg xorg-xinit xterm
 $ startx 
 $ exit
 ```
+### Xorg localization
+---------------------
+```$ localectl --no-convert set-x11-keymap pl```
+
 ### Graphic drivers
 ---------------
 ```$ lspci | grep -e VGA```
