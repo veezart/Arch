@@ -5,6 +5,7 @@ bash-comkpletion
 kitty
 ranger
 python-pillow #image preview
+xclip
 mc
 feh
 pcmanfm-gtk3
