@@ -32,7 +32,7 @@ Checksums check with PowerShell:
 Use app Rufus:
 https://rufus.ie/
 
-## Core installation
+## I Core installation
 ----------------------
 
 ### archfi
