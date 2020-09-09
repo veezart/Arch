@@ -32,12 +32,12 @@ Checksums check with PowerShell:
 Use app Rufus:
 https://rufus.ie/
 
-## I Core installation
+## Core installation
 ----------------------
 
 ### archfi
 ----------
-Instead You can use archfi script instead but remember to completete instalation and configuration like is in the next steps.
+You can use archfi script instead but remember to complette instalation and configuration like is in the next steps.
 https://github.com/MatMoul/archfi                        
                                                                            
 ```wget archfi.sf.net/archfi or wget matmoul.github.io/archfi```                       
