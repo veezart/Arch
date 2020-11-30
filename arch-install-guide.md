@@ -58,6 +58,13 @@ https://github.com/MatMoul/archfi
 $ ip link
 $ ping archlinux.org
 ```
+### Update the system clock:
+----------------------------
+```
+# timedatectl set-ntp true
+# timedatectl status
+```
+
 ### Partition the disks:
 --------------------
 ##### Actually need partitions:
