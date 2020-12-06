@@ -25,8 +25,8 @@ virtualbox-guest-utils
 
 #Windows Manager / Desktop Environment / Compositor
 #--------------------------------------------------
-    #i3-gaps
-    #i3lock
+    i3-gaps
+    i3lock
     #i3block
     rofi
     picom
