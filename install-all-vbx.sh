@@ -68,6 +68,7 @@ virtualbox-guest-utils
 #tools
 #-----
     bash-completion
+    neovim
     kitty
     ranger
     python-pillow #image preview
@@ -117,7 +118,7 @@ virtualbox-guest-utils
 
 listyay=(
 
-    papirus-folders-git
+    #papirus-folders-git
 )
 
 
@@ -131,3 +132,10 @@ yay -S --noconfirm --needed $name
 done
 
 sudo systemctl enable lightdm.service
+
+sudo systemctl enable vboxservice.service
+VBoxClient --clipboard
+VBoxClient --draganddrop
+VBoxClient --seamless
+VBoxClient --checkhostversion
+VBoxClient --vmsvga

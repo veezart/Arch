@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#sudo pacman -S  --noconfirm --needed git
+#pacman -S  --noconfirm --needed git
 
-#sudo git clone https://aur.archlinux.org/yay.git
-#cd yay
-#makepkg -si
+sudo git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 
 list=(
 #Xorg
@@ -24,9 +24,9 @@ list=(
     #i3-gaps
     #i3lock
     #i3block
-    rofi
-    picom
-    lxappearance-gtk3
+    #rofi
+    #picom
+    #lxappearance-gtk3
     #papirus-icon-theme
     #nordic-theme-git
     #gtk-engine-murrine #for gtk theme
@@ -64,6 +64,7 @@ list=(
 #tools
 #-----
     bash-completion
+    neovim
     kitty
     ranger
     python-pillow #image preview
@@ -111,18 +112,19 @@ list=(
     ttf-roboto
 )
 
-#listyay=(
+listyay=(
 
-#    papirus-folders-git
-#)
+    #papirus-folders-git
+)
 
 
 
 for name in "${list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
-
-#for name in "${listyay[@]}" ; do
-#sudo yay -S --noconfirm --needed $name
 done
 
-#sudo systemctl enable lightdm.service
+for name in "${listyay[@]}" ; do
+sudo yay -S --noconfirm --needed $name
+done
+
+sudo systemctl enable lightdm.service
