@@ -1,5 +1,11 @@
 #!/bin/bash
 
+sudo pacman -S  --noconfirm --needed git
+
+sudo git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
 list=(
 #Xorg
 #-----
@@ -20,7 +26,11 @@ list=(
     #i3block
     rofi
     picom
-    lxappearance
+    lxappearance-gtk3
+    #papirus-icon-theme
+    #nordic-theme-git
+    #gtk-engine-murrine #for gtk theme
+    #arc-gtk-theme
     neofetch
 
 # drivers
@@ -102,9 +112,18 @@ list=(
     ttf-roboto
 )
 
+listyay=(
+
+    papirus-folders-git
+)
+
+
 
 for name in "${list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
+
+for name in "${listyay[@]}" ; do
+sudo yay -S --noconfirm --needed $name
 done
 
 sudo systemctl enable lightdm.service
