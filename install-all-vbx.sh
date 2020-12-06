@@ -124,6 +124,7 @@ listyay=(
 
 for name in "${list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
+done
 
 for name in "${listyay[@]}" ; do
 yay -S --noconfirm --needed $name
