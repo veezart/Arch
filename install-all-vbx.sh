@@ -2,7 +2,7 @@
 
 #sudo pacman -S  --noconfirm --needed git
 
-sudo git clone https://aur.archlinux.org/yay.git
+git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
@@ -125,8 +125,8 @@ virtualbox-guest-utils
 for name in "${list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
 
-#for name in "${listyay[@]}" ; do
-#sudo yay -S --noconfirm --needed $name
+for name in "${listyay[@]}" ; do
+yay -S --noconfirm --needed $name
 done
 
 sudo systemctl enable lightdm.service
