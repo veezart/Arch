@@ -115,10 +115,10 @@ virtualbox-guest-utils
     ttf-roboto
 )
 
-#listyay=(
+listyay=(
 
-#    papirus-folders-git
-#)
+    papirus-folders-git
+)
 
 
 
