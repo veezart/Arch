@@ -1,10 +1,10 @@
 #!/bin/bash
 
-sudo pacman -S  --noconfirm --needed git
+#sudo pacman -S  --noconfirm --needed git
 
-sudo git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
+#sudo git clone https://aur.archlinux.org/yay.git
+#cd yay
+#makepkg -si
 
 list=(
 #Xorg
@@ -98,8 +98,7 @@ list=(
 
 #Apps
 #-----
-    #gtk-engine-murrine #for gtk theme
-    flameshot
+    #flameshot
     #imagemagick
     mpv
     youtube-dl
@@ -112,18 +111,18 @@ list=(
     ttf-roboto
 )
 
-listyay=(
+#listyay=(
 
-    papirus-folders-git
-)
+#    papirus-folders-git
+#)
 
 
 
 for name in "${list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
 
-for name in "${listyay[@]}" ; do
-sudo yay -S --noconfirm --needed $name
+#for name in "${listyay[@]}" ; do
+#sudo yay -S --noconfirm --needed $name
 done
 
-sudo systemctl enable lightdm.service
+#sudo systemctl enable lightdm.service
