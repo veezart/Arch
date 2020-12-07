@@ -128,7 +128,7 @@ listyay=(
 
     #papirus-folders-git
     #ttf-inconsolata-g
-    #ttf-iosevka
+    ttf-iosevka
 )
 
 
