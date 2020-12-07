@@ -109,12 +109,26 @@ list=(
 
 #Fonts
 #-----
+
+    ttf-fira-code
+    ttf-dejavu
     ttf-roboto
+    ttf-ubuntu-font-family
+    ttf-inconsolata
+    ttf-hack
+    ttf-opensans
+    inter-font
+    ttf-cascadia-code
+    ttf-font-awesome
+    
+    
 )
 
 listyay=(
 
     #papirus-folders-git
+    #ttf-inconsolata-g
+    #ttf-iosevka
 )
 
 
