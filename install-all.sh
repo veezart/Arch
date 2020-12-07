@@ -139,3 +139,4 @@ sudo yay -S --noconfirm --needed $name
 done
 
 sudo systemctl enable lightdm.service
+sudo systemctl enable fstrim.timer
