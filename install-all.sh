@@ -109,7 +109,6 @@ list=(
 
 #Fonts
 #-----
-
     ttf-fira-code
     ttf-dejavu
     ttf-roboto
@@ -119,9 +118,7 @@ list=(
     ttf-opensans
     inter-font
     ttf-cascadia-code
-    ttf-font-awesome
-    
-    
+    ttf-font-awesome  
 )
 
 listyay=(
