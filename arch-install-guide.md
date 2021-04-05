@@ -139,7 +139,7 @@ $ mount /dev/sdxy /mnt/var
 
 ##### Install
 
-```$ pacstrap /mnt base linux linux-firmware intel-ucode nvim networkmanager (optional: base-devel linux-headers)```
+```$ pacstrap /mnt base linux linux-firmware (optional: base-devel linux-headers)```
 
 ### Fstab
 -----
