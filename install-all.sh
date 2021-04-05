@@ -3,48 +3,27 @@
 
 
 list=(
-#Xorg
-#-----
+ #Core
     base-devel
     linux-headers
+    intel-ucode  
+    networkmanager
     network-manager-applet
+    neovim
     git
-    xorg
-    xorg-xinit
-    xterm
-
-#Desktop Manager
-#---------------
-    lightdm
-    lightdm-gtk-greeter
-    lightdm-gtk-greeter-settings
-
-#Windows Manager / Desktop Environment / Compositor
-#--------------------------------------------------
-    #i3-gaps
-    #i3lock
-    #i3block
-    #rofi
-    #picom
-    #lxappearance-gtk3
-    #papirus-icon-theme
-    #nordic-theme-git
-    #gtk-engine-murrine #for gtk theme
-    #arc-gtk-theme
-    neofetch
-
-# drivers
-#--------
+    polkit
+    tree
+    reflector
     nvidia
-    intel-ucode
     e2fsprogs
     btrfs-progs
     reiserfsprogs
     usbutils
     udisks2
     udiskie
-
-#Sound
+    neofetch
+    
+ #Sound
 #-----
     pulseaudio
     pulseaudio-alsa
@@ -61,23 +40,45 @@ list=(
     playerctl
     volumeicon
 
-#tools
-#-----
+ #Xorg
+#-----   
+    xorg
+    xorg-xinit
+    xterm
+
+#Desktop Manager
+#---------------
+    lightdm
+    lightdm-gtk-greeter
+    lightdm-gtk-greeter-settings
+    
+    
+
+#Windows Manager / Desktop Environment / Compositor
+#--------------------------------------------------
+    #i3-gaps
+    #i3lock
+    #i3block
+    #rofi
+    #papirus-icon-theme
+    #nordic-theme-git
+    #gtk-engine-murrine #for gtk theme
+    #arc-gtk-theme
+    
+    qtile
+    picom
+    lxappearance-gtk3
+    pcmanfm-gtk3
+    feh
+    file-roller
+    htop
+    arandr
     bash-completion
-    neovim
     kitty
     ranger
     python-pillow #image preview
     xclip
     mc
-    feh
-    pcmanfm-gtk3
-    file-roller
-    polkit
-    tree
-    reflector
-    htop
-    arandr
 
 #Network
 #-------
@@ -87,15 +88,15 @@ list=(
 
 #Prints
 #------
-    #cups
-    #cups-pdf
-    #ghostscript
-    #gsfonts
-    #gutenprint
-    #hplip
-    #gtk3-print-backends
-    #libcups
-    #system-config-printer
+    cups
+    cups-pdf
+    ghostscript
+    gsfonts
+    gutenprint
+    hplip
+    gtk3-print-backends
+    libcups
+    system-config-printer
 
 #Apps
 #-----
@@ -142,5 +143,6 @@ for name in "${listyay[@]}" ; do
 sudo yay -S --noconfirm --needed $name
 done
 
+sudo systemctl enable NetworkManager
 sudo systemctl enable lightdm.service
 sudo systemctl enable fstrim.timer
