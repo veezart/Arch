@@ -1,14 +1,14 @@
 #!/bin/bash
 
-#pacman -S  --noconfirm --needed git
 
-sudo git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
 
 list=(
 #Xorg
 #-----
+    base-devel
+    linux-headers
+    network-manager-applet
+    git
     xorg
     xorg-xinit
     xterm
@@ -126,8 +126,12 @@ listyay=(
     #papirus-folders-git
     #ttf-inconsolata-g
     ttf-iosevka
+    ttf-iosevka-term
 )
 
+sudo git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 
 
 for name in "${list[@]}" ; do
