@@ -126,7 +126,8 @@ listyay=(
 
     #papirus-folders-git
     #ttf-inconsolata-g
-    ttf-iosevka
+    brave-bin
+    ttf-iosebrave-binvka
     ttf-iosevka-term
 )
 
