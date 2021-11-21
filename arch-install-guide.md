@@ -31,6 +31,7 @@ Checksums check with PowerShell:
     
 Use app Rufus:
 https://rufus.ie/
+https://www.ventoy.net
 
 ## I Core installation
 ----------------------
