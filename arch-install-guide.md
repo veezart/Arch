@@ -30,10 +30,9 @@ Checksums check with PowerShell:
 --------------------------------
     
 Use app:
-Rufus
-https://rufus.ie/
-Ventoy
-https://www.ventoy.net
+Rufus https://rufus.ie/
+
+Ventoy https://www.ventoy.net
 
 ## I Core installation
 ----------------------
