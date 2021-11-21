@@ -29,9 +29,10 @@ Checksums check with PowerShell:
 ### Create bootable USB flash drive:
 --------------------------------
     
-Use app Rufus:
+Use app:
+Rufus
 https://rufus.ie/
-
+Ventoy
 https://www.ventoy.net
 
 ## I Core installation
