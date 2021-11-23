@@ -1,0 +1,23 @@
+#!/bin/bash
+
+list=(
+bash-comkpletion
+kitty
+ranger
+python-pillow #image preview
+xclip
+mc
+feh
+pcmanfm-gtk3
+file-roller
+polkit
+tree
+reflector
+htop
+arandr
+)
+
+
+for name in "${list[@]}" ; do
+sudo pacman -S --noconfirm --needed $name
+done
