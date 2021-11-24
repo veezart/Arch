@@ -261,7 +261,7 @@ $ pacman -Syu
 ### Personal account
 ----------------
 ```
-$ useradd -m -G audio,video,network,wheel,storage,rfkill -s /bin/bash username 
+$ useradd -m -G audio,video,network,wheel,storage,rfkill -s /bin/bash (oz zsh) username 
 $ passwd username 
 ``` 
 ```$ EDITOR=micro visudo```
