@@ -133,15 +133,13 @@ $ mount /dev/sdxy /mnt/var
 #### Select the mirrors
 
 ##### Edit
-```$ vim /etc/pacman.d/mirrorlist (sort top 5 by closest localization)```
-
-```$ sudo pacman -S reflector```
 
 ```$ reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist```
 
+```$ vim /etc/pacman.d/mirrorlist (sort top 5 by closest localization)```
 ##### Install
 
-```$ pacstrap /mnt base linux linux-firmware (optional: base-devel linux-headers)```
+```$ pacstrap /mnt base base-devel linux linux-firmware linux-headers intel-ucode (for intel CPU) nerworkmanager tree vim micro ```
 
 ### Fstab
 -----
@@ -154,18 +152,7 @@ Check the resulting */mnt/etc/fstab* file, and edit it in case of errors.
 #### Change root into the new system:
 
 ```$ arch-chroot /mnt```
-
-### If used archfi install:
------------------------                                           	    
-                                                                                  
-```$ pacman -S linux-firmware base-devel linux-headers networkmanager vim```
-                                                                           
-### Intel-ucode
------------
-```
-$ pacman -S intel-ucode
-$ pacman -S btrfs-progs reiserfsprogs
-```
+                                                                      
 ### Time zone
 ---------    
 #### Set the time zone:
@@ -178,7 +165,7 @@ $ pacman -S btrfs-progs reiserfsprogs
 
 ### Localization
 ------------
-```$ vim /etc/locale.gen```
+```$ micro /etc/locale.gen```
 ```
 delete $ at:   
 en_US.UTF-8 
@@ -188,7 +175,7 @@ pl_PL.UTF-8
 ```    
 $ locale-gen 
 $ echo LANG=pl_PL.UTF-8 > /etc/locale.conf 
-$ vim /etc/vconsole.conf 
+$ micro /etc/vconsole.conf 
 ```     
 ```
         KEYMAP=pl 
@@ -199,7 +186,7 @@ $ vim /etc/vconsole.conf
 ----
 ```
     $ echo nazwahosta > /etc/hostname 
-    $ vim /etc/hosts
+    $ micro /etc/hosts
 
         127.0.0.1     localhost 
         ::1           localhost 
@@ -218,7 +205,6 @@ $ vim /etc/vconsole.conf
 -----------
 ``` 
 $ bootctl --path=/boot$esp install
-$ pacman -S tree
 $ tree /boot
 ```
 ``` bash
@@ -237,13 +223,13 @@ $ tree /boot
 └── vmlinuz-linux
 ```
 
-```$ vim /boot/loader/loader.conf```
+```$ micro /boot/loader/loader.conf```
 ```
 default arch
 timeout 5
 editor 0
 ```
-```$ vim /boot/loader/entries/arch.conf```
+```$ micro /boot/loader/entries/arch.conf```
 ```
 title   Arch Linux
 linux   /vmlinuz-linux
@@ -271,7 +257,7 @@ $ reboot
 ```
 ### Multilib repository
 -------------------
-```$ vim /etc/pacman.conf``` 
+```$ micro /etc/pacman.conf``` 
 delete $ at: 
 ```
 [multilib] 
@@ -289,7 +275,7 @@ $ pacman -Syu
 $ useradd -m -G audio,video,network,wheel,storage,rfkill -s /bin/bash username 
 $ passwd username 
 ``` 
-```$ EDITOR=vim visudo```
+```$ EDITOR=micro visudo```
 
 ##### delete $ at:   
 ```%wheel ALL=(ALL) ALL``` 
@@ -434,7 +420,7 @@ $ mv fontawesome-webfont.ttf ~/.fonts
 
 ```$ lsusb```
 
-```$ vim /etc/X11/xorg.conf.d/50-tablet.conf``` 
+```$ micro /etc/X11/xorg.conf.d/50-tablet.conf``` 
 ```
         Section "InputClass"
             Identifier "Tablet"
