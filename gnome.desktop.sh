@@ -40,7 +40,7 @@ list=(
     ttf-font-awesome
 )
 
-listyay=(
+listparu=(
 
     #papirus-folders-git
     #ttf-inconsolata-g
@@ -55,8 +55,8 @@ for name in "${list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
 done
 
-for name in "${listyay[@]}" ; do
-yay -S --noconfirm --needed $name
+for name in "${listparu[@]}" ; do
+paru -S --noconfirm --needed $name
 done
 
 sudo systemctl enable gdm.service
