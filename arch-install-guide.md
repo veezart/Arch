@@ -16,8 +16,6 @@ https://wiki.archlinux.org/index.php/Installation_guide
 Packages installation script:
 https://github.com/veezart/Arch/blob/master/installation-script.sh
 
-i3 config file:
-https://github.com/veezart/Arch/blob/master/config
 #### Checksums:
 
 Checksums check with PowerShell:
@@ -36,15 +34,6 @@ Ventoy https://www.ventoy.net
 
 ## I Core installation
 ----------------------
-
-### archfi
-----------
-You can use archfi script instead but remember to complette instalation and configuration like is in the next steps.
-https://github.com/MatMoul/archfi                        
-                                                                           
-```wget archfi.sf.net/archfi or wget matmoul.github.io/archfi```                       
-
-```$sh archfi```                        
                                                                              
 ### Set the keyboard layout:
 ------------------------    
