@@ -4,8 +4,8 @@ sudo pacman -S --noconfirm --needed git
 
 sudo pacman -S gnome
 
-git clone https://aur.archlinux.org/yay.git
-cd yay
+git clone https://aur.archlinux.org/paru.git
+cd paru
 makepkg -si
 
 list=(
@@ -29,6 +29,7 @@ list=(
     youtube-dl
     zsh
     zsh-completions
+    profile-sync-daemon
 
 #Fonts
 #-----
@@ -45,6 +46,7 @@ listyay=(
     #ttf-inconsolata-g
     dracula-gtk-theme
     microsoft-edge-stable-bin
+    profile-sync-daemon-edge
 )
 
 
