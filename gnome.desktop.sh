@@ -15,6 +15,7 @@ list=(
 # drivers
 #--------
     nvidia
+    broadcom-wl
 
 #tools
 #-----
