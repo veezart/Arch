@@ -1,24 +1,25 @@
 #!/bin/bash
 
-sudo pacman -S --noconfirm --needed git
-
 sudo pacman -S gnome
-
+sudo pacman -S --noconfirm --needed git
+#Paru Aur Helper----------------------------
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
+############################################
+##---PACKAGES-----PACKAGES-----PACKAGES---##
+############################################
 
+#>>>>>>>>PACMAN<<<<<<<<
 list=(
 
-
-
-# drivers
-#--------
+    # drivers
+    #--------
     nvidia
     broadcom-wl
 
-#tools
-#-----
+    #tools
+    #-----
     bash-completions
     feh
     keepassxc
@@ -30,28 +31,27 @@ list=(
     youtube-dl
     zsh
     zsh-completions
-    profile-sync-daemon
+    powerline
+    powerline-fonts
+    #profile-sync-daemon
 
-#Fonts
-#-----
-    ttc-iosevka
+    #Fonts
+    #-----
+    ttf-iosevka
     ttf-fira-code
-    ttf-roboto
-    ttf-ubuntu-font-family
-    ttf-font-awesome
+    #ttf-roboto
+    #ttf-ubuntu-font-family
+    #ttf-font-awesome
 )
+#>>>>>>>>>>AUR<<<<<<<<<<
 
 listparu=(
 
-    #papirus-folders-git
-    #ttf-inconsolata-g
-    dracula-gtk-theme
     microsoft-edge-stable-bin
-    profile-sync-daemon-edge
 )
+############################################
 
-
-
+#:::::::::::::::::::::::::::::::::::::::::::
 for name in "${list[@]}" ; do
 sudo pacman -S --noconfirm --needed $name
 done
@@ -59,12 +59,16 @@ done
 for name in "${listparu[@]}" ; do
 paru -S --noconfirm --needed $name
 done
+#:::::::::::::::::::::::::::::::::::::::::::
 
+#Services------------------------
 sudo systemctl enable gdm.service
+#--------------------------------
 
-#zsh configuration
+#Configurations------------------
 zsh
 z
 touch ~/.zshrc
 chsh -s /bin/zsh
+#--------------------------------
 
