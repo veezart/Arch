@@ -29,6 +29,7 @@ list=(
     reflector
     tree
     youtube-dl
+    curl
     zsh
     zsh-completions
     powerline
@@ -61,14 +62,28 @@ paru -S --noconfirm --needed $name
 done
 #:::::::::::::::::::::::::::::::::::::::::::
 
-#Services------------------------
+#++++++++++++++ SERVICES ++++++++++++++
 sudo systemctl enable gdm.service
-#--------------------------------
+#++++++++++++++++++++++++++++++++++++++
 
-#Configurations------------------
+#--#--#--#--#--#--#--#--#--#--#
+#       CONFIGURATIONS        #
+#--#--#--#--#--#--#--#--#--#--#
+
+#=============zsh==============
 zsh
 z
 touch ~/.zshrc
 chsh -s /bin/zsh
-#--------------------------------
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo "powerline-daemon -q" ~/.zshrc
+echo ". /usr/share/powerline/bindings/zsh/powerline.zsh" ~/.zshrc
+#============kitty=============
+
+#==========youtube-dl==========
+
+#=============mpv==============
+
+#--#--#--#--#--#--#--#--#--#--#
+
 
