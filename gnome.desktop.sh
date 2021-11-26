@@ -14,12 +14,12 @@ makepkg -si
 list=(
 
     # drivers
-    #--------
+    # -------
     nvidia
     broadcom-wl
 
-    #tools
-    #-----
+    # tools
+    # -----
     bash-completions
     feh
     keepassxc
@@ -36,8 +36,8 @@ list=(
     powerline-fonts
     #profile-sync-daemon
 
-    #Fonts
-    #-----
+    # Fonts
+    # -----
     ttf-iosevka
     ttf-fira-code
     #ttf-roboto
